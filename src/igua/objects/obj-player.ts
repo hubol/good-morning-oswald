@@ -1,9 +1,10 @@
-import { DisplayObject } from "pixi.js";
+import { DisplayObject, Sprite } from "pixi.js";
 import { Cutscene, Input } from "../globals";
 import { mxnPhysics } from "../mixins/mxn-physics";
 import { container } from "../../lib/pixi/container";
 import { approachLinear } from "../../lib/math/number";
 import { Tx } from "../../assets/textures";
+import { mxnBoilPivot } from "../mixins/mxn-boil-pivot";
 
 const PlayerConsts = {
     WalkingTopSpeed: 3,
@@ -15,10 +16,41 @@ const PlayerConsts = {
     Gravity: 0.15,
 };
 
-Tx.Player.Layers.split({ width: 86 });
+const [txLegsRest, txLegsWalk, txHead, txSclera, txFace, txPp] = Tx.Player.Layers.split({ width: 86 });
+
+function objLegs() {
+    let subimage = -1;
+    const legsObj = container(Sprite.from(txLegsRest), Sprite.from(txLegsWalk));
+
+    const c = container(legsObj, Sprite.from(txPp)).merge({
+        get subimage() {
+            return subimage;
+        },
+        set subimage(value) {
+            if (subimage === value) {
+                return;
+            }
+            subimage = value;
+            for (const child of legsObj.children) {
+                child.visible = false;
+            }
+            legsObj.children[value].visible = true;
+        },
+    });
+
+    c.subimage = 0;
+
+    return c;
+}
+
+function objHead() {
+    const scleraObj = Sprite.from(txSclera).mixin(mxnBoilPivot);
+    const faceObj = Sprite.from(txFace).mixin(mxnBoilPivot);
+    return container(Sprite.from(txHead), scleraObj, faceObj).mixin(mxnBoilPivot);
+}
 
 function objPlayerPuppet() {
-    return container();
+    return container(objLegs(), objHead().at(0, 16)).pivoted(45, 69);
 }
 
 function objPlayer() {
