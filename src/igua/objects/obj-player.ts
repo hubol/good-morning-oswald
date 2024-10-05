@@ -5,6 +5,7 @@ import { container } from "../../lib/pixi/container";
 import { approachLinear } from "../../lib/math/number";
 import { Tx } from "../../assets/textures";
 import { mxnBoilPivot } from "../mixins/mxn-boil-pivot";
+import { vnew } from "../../lib/math/vector-type";
 
 const PlayerConsts = {
     WalkingTopSpeed: 3,
@@ -17,15 +18,36 @@ const PlayerConsts = {
     Gravity: 0.15,
 };
 
-const [txLegsRest, txLegsWalk, txHead, txSclera, txFace, txPp, txHat, txLegsSkid] = Tx.Player.Layers.split({
+const [txLegsRest, txLegsWalk, txHead, txSclera, txFace, txPp, txHat, txLegsSkid, txLegsDuck] = Tx.Player.Layers.split({
     width: 86,
 });
 
 function objLegs() {
     let subimage = -1;
-    const legsObj = container(Sprite.from(txLegsRest), Sprite.from(txLegsWalk), Sprite.from(txLegsSkid));
+    const legsObj = container(
+        Sprite.from(txLegsRest),
+        Sprite.from(txLegsWalk),
+        Sprite.from(txLegsSkid),
+        Sprite.from(txLegsDuck),
+    );
 
-    const c = container(legsObj, Sprite.from(txPp)).merge({
+    const positions = [
+        vnew(),
+        vnew(),
+        vnew(),
+        vnew(0, 13),
+    ];
+
+    const ppPositions = [
+        vnew(),
+        vnew(0, 0),
+        vnew(),
+        vnew(0, 1),
+    ];
+
+    const ppObj = Sprite.from(txPp);
+
+    const c = container(legsObj, ppObj).merge({
         get subimage() {
             return subimage;
         },
@@ -38,6 +60,8 @@ function objLegs() {
                 child.visible = false;
             }
             legsObj.children[value].visible = true;
+            c.at(positions[value] ?? positions[0]);
+            ppObj.at(ppPositions[value] ?? ppPositions[0]);
         },
     });
 
@@ -85,7 +109,7 @@ function objPlayerPuppet() {
                 legsObj.subimage = 2;
             }
             else if (self.isDucking) {
-                legsObj.subimage = 0;
+                legsObj.subimage = headObj.y > 5 ? 3 : 0;
             }
             else {
                 legsObj.subimage = Math.abs(Math.round(self.pedometer)) % 2;
@@ -109,6 +133,7 @@ function objPlayer() {
 
             if (isMovingLeft == isMovingRight) {
                 puppet.isSkidding = isDucking && puppet.speed.x !== 0;
+                puppet.isDucking = isDucking && !puppet.isSkidding;
                 puppet.speed.x = approachLinear(
                     puppet.speed.x,
                     0,
@@ -116,6 +141,7 @@ function objPlayer() {
                 );
             }
             else {
+                puppet.isDucking = false;
                 puppet.isSkidding = (isMovingLeft && puppet.speed.x > 0) || (isMovingRight && puppet.speed.x < 0);
                 puppet.isMovingLeft = isMovingLeft;
                 puppet.speed.x = approachLinear(
@@ -124,8 +150,6 @@ function objPlayer() {
                     puppet.isSkidding ? PlayerConsts.SkiddingDelta : PlayerConsts.WalkingAcceleration,
                 );
             }
-
-            puppet.isDucking = isDucking;
 
             puppet.pedometer = (puppet.speed.x === 0 || puppet.isSkidding)
                 ? 0
