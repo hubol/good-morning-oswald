@@ -919,6 +919,54 @@
           "originX": 0.5,
           "originY": 0.5,
           "values": {"name": ""}
+        },
+        {
+          "x": 264,
+          "y": 632,
+          "scaleX": 4,
+          "scaleY": 1,
+          "rotation": 0,
+          "tint": "#2181b7",
+          "texture": "fx/cloud.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
+        },
+        {
+          "x": -8,
+          "y": 632,
+          "scaleX": 19,
+          "scaleY": 14,
+          "rotation": 0,
+          "tint": "#2181b7",
+          "texture": "shapes/square32.png",
+          "originX": 0,
+          "originY": 0,
+          "values": {"name": ""}
+        },
+        {
+          "x": 288,
+          "y": 616,
+          "scaleX": 1,
+          "scaleY": 1,
+          "rotation": 0,
+          "tint": "#ffffff",
+          "texture": "fx/cloud.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
+        },
+        {
+          "x": 88,
+          "y": 704,
+          "scaleX": 1,
+          "scaleY": 1,
+          "rotation": 0,
+          "tint": "#ffffff",
+          "texture": "fx/cloud.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
         }
       ],
       "folder": "../textures"
