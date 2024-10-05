@@ -7,6 +7,32 @@ import { Tx } from "../../../assets/textures";
 const { createEntity: e, createDecal: d, createLevel: l } = OgmoFactory;
 
 export const Lvl = {
+  Home: l({ width: 512, height: 256, backgroundTint: 0x3e1512 }, () => ({
+    HomePoster: d(Tx.Home.Poster, { x: 75, y: 103, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "BackgroundDecals"),
+    TerrainGrass1: d(Tx.Terrain.Grass1, { x: 88, y: 195, scaleX: 1, scaleY: -1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
+    TerrainGrass1_1: d(Tx.Terrain.Grass1, { x: 200, y: 195, scaleX: 1, scaleY: -1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
+    TerrainGrass1_2: d(Tx.Terrain.Grass1, { x: 312, y: 195, scaleX: -1, scaleY: -1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
+    TerrainGrass1_3: d(Tx.Terrain.Grass1, { x: 408, y: 195, scaleX: -1, scaleY: -1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
+    TerrainGrass1_4: d(Tx.Terrain.Grass1, { x: 520, y: 195, scaleX: -1, scaleY: -1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
+    TerrainGrass1_5: d(Tx.Terrain.Grass1, { x: 408, y: 62, scaleX: -1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
+    TerrainGrass1_6: d(Tx.Terrain.Grass1, { x: 296, y: 62, scaleX: -1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
+    TerrainGrass1_7: d(Tx.Terrain.Grass1, { x: 200, y: 62, scaleX: -1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
+    TerrainGrass1_8: d(Tx.Terrain.Grass1, { x: 88, y: 62, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
+    TerrainGrass1_9: d(Tx.Terrain.Grass1, { x: 504, y: 99, scaleX: 1, scaleY: -1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
+    TerrainGrass3: d(Tx.Terrain.Grass3, { x: 48, y: 80, scaleX: 1, scaleY: 1, rotation: -41.03346380592427, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
+    TerrainGrass3_1: d(Tx.Terrain.Grass3, { x: 432, y: 80, scaleX: 1, scaleY: 1, rotation: 45, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
+    TerrainGrass1_10: d(Tx.Terrain.Grass1, { x: 32, y: 131, scaleX: 1, scaleY: -1, rotation: 90, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
+    HomeWindow: d(Tx.Home.Window, { x: 201, y: 131, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x826995 }, "BackgroundDecals"),
+    Block: e(r["Block"], { x: 0, y: 0, width: 512, height: 64, values: { name: "", depth: 0, visible: true }, tint: 0x000000 }),
+    Block_1: e(r["Block"], { x: 0, y: 192, width: 512, height: 64, values: { name: "", depth: 0, visible: true }, tint: 0x000000 }),
+    Block_2: e(r["Block"], { x: 0, y: 64, width: 32, height: 128, values: { name: "", depth: 0, visible: true }, tint: 0x000000 }),
+    Slope: e(r["Slope"], { x: 32, y: 64, width: 32, height: 32, flippedX: true, flippedY: true, values: { name: "", depth: 0 }, tint: 0x000000 }),
+    Slope_1: e(r["Slope"], { x: 416, y: 64, width: 32, height: 32, flippedX: false, flippedY: true, values: { name: "", depth: 0 }, tint: 0x000000 }),
+    Block_3: e(r["Block"], { x: 448, y: 64, width: 64, height: 32, values: { name: "", depth: 0, visible: true }, tint: 0x000000 }),
+    HomeGoodMorning: d(Tx.Home.GoodMorning, { x: 256, y: 64, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "FrontDecals"),
+    HomeWindowLight: d(Tx.Home.WindowLight, { x: 162, y: 151, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffdeb8 }, "FrontDecals"),
+    Player: e(r["Player"], { x: 112, y: 120, values: { name: "", depth: 0 } }),
+  })),
   Level1: l({ width: 512, height: 1064, backgroundTint: 0x184880 }, () => ({
     FxCloud: d(Tx.Fx.Cloud, { x: 56, y: 488, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "SkyDecals"),
     FxCloud_1: d(Tx.Fx.Cloud, { x: 200, y: 432, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "SkyDecals"),
