@@ -18,9 +18,10 @@ const PlayerConsts = {
     Gravity: 0.15,
 };
 
-const [txLegsRest, txLegsWalk, txHead, txSclera, txFace, txPp, txHat, txLegsSkid, txLegsDuck] = Tx.Player.Layers.split({
-    width: 86,
-});
+const [txLegsRest, txLegsWalk, txHead, txSclera, txFace, txPp, txHat, txLegsSkid, txLegsDuck, txLegsFall] = Tx.Player
+    .Layers.split({
+        width: 86,
+    });
 
 function objLegs() {
     let subimage = -1;
@@ -29,6 +30,8 @@ function objLegs() {
         Sprite.from(txLegsWalk),
         Sprite.from(txLegsSkid),
         Sprite.from(txLegsDuck),
+        Sprite.from(txLegsWalk),
+        Sprite.from(txLegsFall),
     );
 
     const positions = [
@@ -36,6 +39,8 @@ function objLegs() {
         vnew(),
         vnew(),
         vnew(0, 13),
+        vnew(0, -4),
+        vnew(),
     ];
 
     const ppPositions = [
@@ -43,6 +48,8 @@ function objLegs() {
         vnew(0, 0),
         vnew(),
         vnew(0, 1),
+        vnew(),
+        vnew(),
     ];
 
     const ppObj = Sprite.from(txPp);
@@ -81,10 +88,14 @@ function objHead() {
         .at(0, 10);
 
     return container(visualHeadObj)
-        .merge({ isLookingLeft: false })
+        .merge({ isLookingLeft: false, lookingVerticalUnit: 0 })
         .step(self => {
             faceObj.x = approachLinear(faceObj.x, self.isLookingLeft ? -16 : 0, 1);
             scleraObj.x = approachLinear(scleraObj.x, self.isLookingLeft ? -16 : 0, 2);
+
+            faceObj.y = approachLinear(faceObj.y, self.lookingVerticalUnit * 5, 1);
+            scleraObj.y = approachLinear(scleraObj.y, self.lookingVerticalUnit * 5, 2);
+
             hatObj.flipH(scleraObj.x < -8 ? -1 : 1);
             headObj.flipH(faceObj.x < -15 ? -1 : 1);
         });
@@ -100,9 +111,18 @@ function objPlayerPuppet() {
     const headObj = objHead();
     return container(legsObj, headObj)
         .pivoted(45, 69 + 24)
-        .merge({ isMovingLeft: false, pedometer: 0, isSkidding: false, isDucking: false, isSkiddingSevere: false })
+        .merge({
+            isMovingLeft: false,
+            pedometer: 0,
+            isSkidding: false,
+            isDucking: false,
+            isSkiddingSevere: false,
+            isJumping: false,
+            isFalling: false,
+        })
         .step(self => {
             headObj.isLookingLeft = self.isMovingLeft;
+            headObj.lookingVerticalUnit = self.isJumping ? -1 : 0;
             legsObj.flipH(self.isMovingLeft ? -1 : 1);
 
             const skidX = 7 * (self.isMovingLeft ? -1 : 1);
@@ -115,6 +135,12 @@ function objPlayerPuppet() {
             }
             else if (self.isDucking) {
                 legsObj.subimage = headObj.y > 5 ? 3 : 0;
+            }
+            else if (self.isJumping) {
+                legsObj.subimage = 4;
+            }
+            else if (self.isFalling) {
+                legsObj.subimage = 5;
             }
             else {
                 legsObj.subimage = Math.abs(Math.round(self.pedometer)) % 2;
@@ -171,6 +197,9 @@ function objPlayer() {
             if (hasControl && puppet.isOnGround && !isDucking && Input.justWentDown("Jump")) {
                 puppet.speed.y = PlayerConsts.JumpSpeed;
             }
+
+            puppet.isJumping = puppet.speed.y < 0 && !puppet.isOnGround;
+            puppet.isFalling = puppet.speed.y > 0 && !puppet.isOnGround;
         });
 
     return puppet;
