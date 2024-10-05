@@ -7,6 +7,8 @@ import { Tx } from "../../assets/textures";
 import { mxnBoilPivot } from "../mixins/mxn-boil-pivot";
 import { Vector, vnew } from "../../lib/math/vector-type";
 import { objFxHeart } from "./fx/obj-fx-heart";
+import { Sfx } from "../../assets/sounds";
+import { Rng } from "../../lib/math/rng";
 
 const PlayerConsts = {
     WalkingTopSpeed: 3,
@@ -288,6 +290,9 @@ function objPlayer() {
             const isMovingLeft = hasControl && !isDucking && Input.isDown("MoveLeft");
             const isMovingRight = hasControl && !isDucking && Input.isDown("MoveRight");
 
+            if (puppet.isDucking !== isDucking) {
+                (isDucking ? Sfx.Player.Duck : Sfx.Player.Unduck).with.rate(Rng.float(0.9, 1.1)).play();
+            }
             puppet.isDucking = isDucking;
 
             if (isMovingLeft == isMovingRight) {
