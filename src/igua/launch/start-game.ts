@@ -12,5 +12,5 @@ export function startGame() {
 function getStartSceneName() {
     return (Environment.isDev && DevStartScene.name)
         ? DevStartScene.name
-        : "scnLevel1";
+        : "scnHome";
 }

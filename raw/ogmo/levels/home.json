@@ -21,8 +21,8 @@
           "name": "Player",
           "id": 0,
           "_eid": "93092164",
-          "x": 112,
-          "y": 120,
+          "x": 160,
+          "y": 186,
           "originX": 30,
           "originY": 56,
           "values": {"name": "", "depth": 0}
@@ -167,8 +167,8 @@
       "gridCellsY": 32,
       "decals": [
         {
-          "x": 75,
-          "y": 103,
+          "x": 99,
+          "y": 111,
           "scaleX": 1,
           "scaleY": 1,
           "rotation": 0,

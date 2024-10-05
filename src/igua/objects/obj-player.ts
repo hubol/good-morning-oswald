@@ -9,6 +9,7 @@ import { Vector, vnew } from "../../lib/math/vector-type";
 import { objFxHeart } from "./fx/obj-fx-heart";
 import { Sfx } from "../../assets/sounds";
 import { Rng } from "../../lib/math/rng";
+import { objFxTear } from "./fx/obj-fx-tear";
 
 const PlayerConsts = {
     WalkingTopSpeed: 3,
@@ -33,6 +34,7 @@ const [
     txLegsDuck,
     txLegsFall,
     txLegsDuckSkid,
+    txHatFacingAway,
 ] = Tx.Player
     .Layers.split({
         width: 86,
@@ -153,6 +155,10 @@ function objLegs() {
             }
             bigPpObj.setStrokeDirection(bigPpStrokeDirections[value] ?? bigPpStrokeDirections[0]);
         },
+        set ppVisible(value: boolean) {
+            ppObj.visible = value;
+            bigPpObj.visible = value;
+        },
     })
         .step(() => {
             {
@@ -184,8 +190,13 @@ function objHead() {
         .mixin(mxnBoilPivot)
         .at(0, 10);
 
+    function shedTear() {
+        const b = scleraObj.getBounds();
+        objFxTear().at(b).add(40, 50).show();
+    }
+
     return container(visualHeadObj)
-        .merge({ isLookingLeft: false, lookingVerticalUnit: 0 })
+        .merge({ isLookingLeft: false, lookingVerticalUnit: 0, isFacingAway: false, shedTear })
         .step(self => {
             faceObj.x = approachLinear(faceObj.x, self.isLookingLeft ? -16 : 0, 1);
             scleraObj.x = approachLinear(scleraObj.x, self.isLookingLeft ? -16 : 0, 2);
@@ -195,6 +206,10 @@ function objHead() {
 
             hatObj.flipH(scleraObj.x < -8 ? -1 : 1);
             headObj.flipH(faceObj.x < -15 ? -1 : 1);
+
+            faceObj.visible = !self.isFacingAway;
+            scleraObj.visible = !self.isFacingAway;
+            hatObj.texture = self.isFacingAway ? txHatFacingAway : txHat;
         });
 }
 
@@ -217,12 +232,17 @@ function objPlayerPuppet() {
             isSkiddingSevere: false,
             isJumping: false,
             isFalling: false,
+            isFacingAway: false,
             landingFrames: 0,
+            shedTear: headObj.shedTear,
         })
         .step(self => {
             headObj.isLookingLeft = self.isMovingLeft;
             headObj.lookingVerticalUnit = self.isJumping ? -1 : 0;
             legsObj.flipH(self.isMovingLeft ? -1 : 1);
+
+            legsObj.ppVisible = !self.isFacingAway;
+            headObj.isFacingAway = self.isFacingAway;
 
             const skidX = 7 * (self.isMovingLeft ? -1 : 1);
             headObj.x = approachLinear(headObj.x, self.isSkiddingSevere ? skidX : 0, self.isSkiddingSevere ? 1 : 2);

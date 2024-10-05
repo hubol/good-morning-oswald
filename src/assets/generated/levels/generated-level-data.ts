@@ -8,7 +8,7 @@ const { createEntity: e, createDecal: d, createLevel: l } = OgmoFactory;
 
 export const Lvl = {
   Home: l({ width: 512, height: 256, backgroundTint: 0x3e1512 }, () => ({
-    HomePoster: d(Tx.Home.Poster, { x: 75, y: 103, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "BackgroundDecals"),
+    HomePoster: d(Tx.Home.Poster, { x: 99, y: 111, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "BackgroundDecals"),
     TerrainGrass1: d(Tx.Terrain.Grass1, { x: 88, y: 195, scaleX: 1, scaleY: -1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
     TerrainGrass1_1: d(Tx.Terrain.Grass1, { x: 200, y: 195, scaleX: 1, scaleY: -1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
     TerrainGrass1_2: d(Tx.Terrain.Grass1, { x: 312, y: 195, scaleX: -1, scaleY: -1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
@@ -31,7 +31,7 @@ export const Lvl = {
     Block_3: e(r["Block"], { x: 448, y: 64, width: 64, height: 32, values: { name: "", depth: 0, visible: true }, tint: 0x000000 }),
     HomeGoodMorning: d(Tx.Home.GoodMorning, { x: 256, y: 64, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "FrontDecals"),
     HomeWindowLight: d(Tx.Home.WindowLight, { x: 162, y: 151, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffdeb8 }, "FrontDecals"),
-    Player: e(r["Player"], { x: 112, y: 120, values: { name: "", depth: 0 } }),
+    Player: e(r["Player"], { x: 160, y: 186, values: { name: "", depth: 0 } }),
   })),
   Level1: l({ width: 512, height: 1064, backgroundTint: 0x184880 }, () => ({
     FxCloud: d(Tx.Fx.Cloud, { x: 56, y: 488, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "SkyDecals"),
