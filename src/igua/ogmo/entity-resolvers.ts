@@ -1,4 +1,5 @@
 import { vnew } from "../../lib/math/vector-type";
+import { objGate } from "../objects/obj-gate";
 import { createPlayerObj, playerObj } from "../objects/obj-player";
 import { objPipe, objPipeSlope, objSolidBlock, objSolidSlope } from "../objects/obj-terrain";
 import { OgmoFactory } from "./factory";
@@ -9,6 +10,7 @@ export const OgmoEntityResolvers = {
     "Slope": objSolidSlope,
     "Pipe": objPipe,
     "PipeSlope": objPipeSlope,
+    "Gate": (e) => objGate(e.values as any),
 } satisfies Record<string, (e: OgmoFactory.Entity) => unknown>;
 
 function createOrConfigurePlayerObj(entity: OgmoFactory.Entity, checkpointName?: string) {

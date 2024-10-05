@@ -17,7 +17,6 @@ export namespace OgmoFactory {
 
     interface EntityValues {
         name: string;
-        depth: number;
         visible?: boolean;
     }
 
