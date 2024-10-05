@@ -1,11 +1,12 @@
 import { DisplayObject, Sprite } from "pixi.js";
-import { Cutscene, Input } from "../globals";
+import { Cutscene, Input, scene } from "../globals";
 import { mxnPhysics } from "../mixins/mxn-physics";
 import { container } from "../../lib/pixi/container";
 import { approachLinear } from "../../lib/math/number";
 import { Tx } from "../../assets/textures";
 import { mxnBoilPivot } from "../mixins/mxn-boil-pivot";
 import { vnew } from "../../lib/math/vector-type";
+import { objFxHeart } from "./fx/obj-fx-heart";
 
 const PlayerConsts = {
     WalkingTopSpeed: 3,
@@ -200,6 +201,11 @@ function objPlayer() {
 
             puppet.isJumping = puppet.speed.y < 0 && !puppet.isOnGround;
             puppet.isFalling = puppet.speed.y > 0 && !puppet.isOnGround;
+
+            if (puppet.isSkidding && puppet.isOnGround && puppet.speed.x !== 0 && scene.ticker.ticks % 3 === 0) {
+                const dx = puppet.speed.x < 0 ? 24 : -24;
+                objFxHeart().at(puppet.x + dx, puppet.y + 9).show();
+            }
         });
 
     return puppet;
