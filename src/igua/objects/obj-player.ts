@@ -19,7 +19,19 @@ const PlayerConsts = {
     Gravity: 0.15,
 };
 
-const [txLegsRest, txLegsWalk, txHead, txSclera, txFace, txPp, txHat, txLegsSkid, txLegsDuck, txLegsFall] = Tx.Player
+const [
+    txLegsRest,
+    txLegsWalk,
+    txHead,
+    txSclera,
+    txFace,
+    txPp,
+    txHat,
+    txLegsSkid,
+    txLegsDuck,
+    txLegsFall,
+    txLegsDuckSkid,
+] = Tx.Player
     .Layers.split({
         width: 86,
     });
@@ -33,6 +45,7 @@ function objLegs() {
         Sprite.from(txLegsDuck),
         Sprite.from(txLegsWalk),
         Sprite.from(txLegsFall),
+        Sprite.from(txLegsDuckSkid),
     );
 
     const positions = [
@@ -42,6 +55,7 @@ function objLegs() {
         vnew(0, 13),
         vnew(0, -4),
         vnew(),
+        vnew(0, 13),
     ];
 
     const ppPositions = [
@@ -49,6 +63,7 @@ function objLegs() {
         vnew(0, 0),
         vnew(),
         vnew(0, 1),
+        vnew(),
         vnew(),
         vnew(),
     ];
@@ -144,7 +159,7 @@ function objPlayerPuppet() {
             }
 
             if (self.isSkidding) {
-                legsObj.subimage = 2;
+                legsObj.subimage = self.isDucking ? 6 : 2;
             }
             else if (self.isDucking) {
                 legsObj.subimage = headObj.y > 5 ? 3 : 0;
@@ -184,14 +199,16 @@ function objPlayer() {
         })
         .step(() => {
             const hasControl = puppet.hasControl;
-            const isDucking = hasControl && puppet.isOnGround && Input.isDown("Duck");
+            const willJump = hasControl && puppet.isOnGround && Input.justWentDown("Jump");
+            const isDucking = hasControl && puppet.isOnGround && !willJump && Input.isDown("Duck");
             const isMovingLeft = hasControl && !isDucking && Input.isDown("MoveLeft");
             const isMovingRight = hasControl && !isDucking && Input.isDown("MoveRight");
+
+            puppet.isDucking = isDucking;
 
             if (isMovingLeft == isMovingRight) {
                 puppet.isSkidding = isDucking && puppet.speed.x !== 0;
                 puppet.isSkiddingSevere = false;
-                puppet.isDucking = isDucking && !puppet.isSkidding;
                 puppet.speed.x = approachLinear(
                     puppet.speed.x,
                     0,
@@ -199,7 +216,6 @@ function objPlayer() {
                 );
             }
             else {
-                puppet.isDucking = false;
                 puppet.isSkidding = (isMovingLeft && puppet.speed.x > 0) || (isMovingRight && puppet.speed.x < 0);
                 puppet.isSkiddingSevere = puppet.isSkidding;
                 puppet.isMovingLeft = isMovingLeft;
@@ -220,7 +236,7 @@ function objPlayer() {
             ) {
                 puppet.speed.y += PlayerConsts.VariableJumpDelta;
             }
-            if (hasControl && puppet.isOnGround && !isDucking && Input.justWentDown("Jump")) {
+            if (willJump) {
                 puppet.speed.y = PlayerConsts.JumpSpeed;
             }
 
@@ -228,8 +244,9 @@ function objPlayer() {
             puppet.isFalling = puppet.speed.y > 0 && !puppet.isOnGround;
 
             if (puppet.isSkidding && puppet.isOnGround && puppet.speed.x !== 0 && scene.ticker.ticks % 3 === 0) {
-                const dx = puppet.speed.x < 0 ? 24 : -24;
-                objFxHeart().at(puppet.x + dx, puppet.y + 9).show();
+                const dx = Math.sign(-puppet.speed.x) * (puppet.isDucking ? 10 : 24);
+                const dy = puppet.isDucking ? 15 : 9;
+                objFxHeart().at(puppet.x + dx, puppet.y + dy).show();
             }
         });
 
