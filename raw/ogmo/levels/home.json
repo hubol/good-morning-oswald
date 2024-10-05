@@ -62,6 +62,18 @@
           "originX": 0.5,
           "originY": 0.5,
           "values": {"name": ""}
+        },
+        {
+          "x": 52,
+          "y": 175,
+          "scaleX": 1,
+          "scaleY": 1,
+          "rotation": 0,
+          "tint": "#636363",
+          "texture": "home/cobweb.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
         }
       ],
       "folder": "../textures"
@@ -166,6 +178,18 @@
       "gridCellsX": 64,
       "gridCellsY": 32,
       "decals": [
+        {
+          "x": 80,
+          "y": 168,
+          "scaleX": -1,
+          "scaleY": 1,
+          "rotation": 0,
+          "tint": "#000000",
+          "texture": "home/crack.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
+        },
         {
           "x": 99,
           "y": 111,
@@ -342,6 +366,30 @@
           "rotation": 0,
           "tint": "#826995",
           "texture": "home/window.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
+        },
+        {
+          "x": 376,
+          "y": 168,
+          "scaleX": 1,
+          "scaleY": 1,
+          "rotation": 0,
+          "tint": "#000000",
+          "texture": "home/crack.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
+        },
+        {
+          "x": 344,
+          "y": 64,
+          "scaleX": 1,
+          "scaleY": 1,
+          "rotation": -157.3660509229303,
+          "tint": "#000000",
+          "texture": "home/crack.png",
           "originX": 0.5,
           "originY": 0.5,
           "values": {"name": ""}

@@ -8,6 +8,7 @@ const { createEntity: e, createDecal: d, createLevel: l } = OgmoFactory;
 
 export const Lvl = {
   Home: l({ width: 512, height: 256, backgroundTint: 0x3e1512 }, () => ({
+    HomeCrack: d(Tx.Home.Crack, { x: 80, y: 168, scaleX: -1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
     HomePoster: d(Tx.Home.Poster, { x: 99, y: 111, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "BackgroundDecals"),
     TerrainGrass1: d(Tx.Terrain.Grass1, { x: 88, y: 195, scaleX: 1, scaleY: -1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
     TerrainGrass1_1: d(Tx.Terrain.Grass1, { x: 200, y: 195, scaleX: 1, scaleY: -1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
@@ -23,6 +24,8 @@ export const Lvl = {
     TerrainGrass3_1: d(Tx.Terrain.Grass3, { x: 432, y: 80, scaleX: 1, scaleY: 1, rotation: 45, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
     TerrainGrass1_10: d(Tx.Terrain.Grass1, { x: 32, y: 131, scaleX: 1, scaleY: -1, rotation: 90, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
     HomeWindow: d(Tx.Home.Window, { x: 201, y: 131, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x826995 }, "BackgroundDecals"),
+    HomeCrack_1: d(Tx.Home.Crack, { x: 376, y: 168, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
+    HomeCrack_2: d(Tx.Home.Crack, { x: 344, y: 64, scaleX: 1, scaleY: 1, rotation: -157.3660509229303, originX: 0.5, originY: 0.5, tint: 0x000000 }, "BackgroundDecals"),
     Block: e(r["Block"], { x: 0, y: 0, width: 512, height: 64, values: { name: "", depth: 0, visible: true }, tint: 0x000000 }),
     Block_1: e(r["Block"], { x: 0, y: 192, width: 512, height: 64, values: { name: "", depth: 0, visible: true }, tint: 0x000000 }),
     Block_2: e(r["Block"], { x: 0, y: 64, width: 32, height: 128, values: { name: "", depth: 0, visible: true }, tint: 0x000000 }),
@@ -31,6 +34,7 @@ export const Lvl = {
     Block_3: e(r["Block"], { x: 448, y: 64, width: 64, height: 32, values: { name: "", depth: 0, visible: true }, tint: 0x000000 }),
     HomeGoodMorning: d(Tx.Home.GoodMorning, { x: 256, y: 64, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "FrontDecals"),
     HomeWindowLight: d(Tx.Home.WindowLight, { x: 162, y: 151, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffdeb8 }, "FrontDecals"),
+    HomeCobweb: d(Tx.Home.Cobweb, { x: 52, y: 175, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x636363 }, "FrontDecals"),
     Player: e(r["Player"], { x: 160, y: 186, values: { name: "", depth: 0 } }),
   })),
   Level1: l({ width: 512, height: 1064, backgroundTint: 0x184880 }, () => ({

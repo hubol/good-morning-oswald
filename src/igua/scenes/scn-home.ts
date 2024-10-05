@@ -23,11 +23,11 @@ export function scnHome() {
         }).show();
         yield lerp(blender, "factor").to(1).over(1000);
         yield sleep(1000);
-        HomeGoodMorning.visible = true;
-        yield sleep(500);
         playerObj.isFacingAway = false;
-        yield sleep(250);
+        yield sleep(1000);
         playerObj.shedTear();
+        yield sleep(1500);
+        HomeGoodMorning.visible = true;
         yield sleep(500);
     });
 }

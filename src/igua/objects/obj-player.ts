@@ -290,7 +290,7 @@ function objPlayer() {
             gravity: PlayerConsts.Gravity,
             physicsRadius: 10,
             onMove(event) {
-                if (event.hitGround && !event.previousOnGround) {
+                if (event.hitGround && !event.previousOnGround && event.previousSpeed.y > PlayerConsts.Gravity) {
                     puppet.landingFrames = 8;
                     for (let i = -2; i <= 2; i++) {
                         objFxHeart().at(puppet).add(i * 9, 16).show();
@@ -310,7 +310,7 @@ function objPlayer() {
             const isMovingLeft = hasControl && !isDucking && Input.isDown("MoveLeft");
             const isMovingRight = hasControl && !isDucking && Input.isDown("MoveRight");
 
-            if (puppet.isDucking !== isDucking) {
+            if (puppet.isDucking != isDucking) {
                 (isDucking ? Sfx.Player.Duck : Sfx.Player.Unduck).with.rate(Rng.float(0.9, 1.1)).play();
             }
             puppet.isDucking = isDucking;
