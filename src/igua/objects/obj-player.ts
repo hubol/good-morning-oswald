@@ -94,16 +94,21 @@ function objPlayerPuppet() {
     const headRestY = 0;
     const headDuckY = 17;
 
+    let headY = 0;
+
     const legsObj = objLegs();
     const headObj = objHead();
     return container(legsObj, headObj)
         .pivoted(45, 69 + 24)
-        .merge({ isMovingLeft: false, pedometer: 0, isSkidding: false, isDucking: false })
+        .merge({ isMovingLeft: false, pedometer: 0, isSkidding: false, isDucking: false, isSkiddingSevere: false })
         .step(self => {
             headObj.isLookingLeft = self.isMovingLeft;
             legsObj.flipH(self.isMovingLeft ? -1 : 1);
 
-            headObj.y = approachLinear(headObj.y, self.isDucking ? headDuckY : headRestY, self.isDucking ? 2 : 1);
+            const skidX = 7 * (self.isMovingLeft ? -1 : 1);
+            headObj.x = approachLinear(headObj.x, self.isSkiddingSevere ? skidX : 0, self.isSkiddingSevere ? 1 : 2);
+            headY = approachLinear(headY, self.isDucking ? headDuckY : headRestY, self.isDucking ? 2 : 3);
+            headObj.y = Math.min(headDuckY, Math.round(headY / 3) * 3);
 
             if (self.isSkidding) {
                 legsObj.subimage = 2;
@@ -133,6 +138,7 @@ function objPlayer() {
 
             if (isMovingLeft == isMovingRight) {
                 puppet.isSkidding = isDucking && puppet.speed.x !== 0;
+                puppet.isSkiddingSevere = false;
                 puppet.isDucking = isDucking && !puppet.isSkidding;
                 puppet.speed.x = approachLinear(
                     puppet.speed.x,
@@ -143,6 +149,7 @@ function objPlayer() {
             else {
                 puppet.isDucking = false;
                 puppet.isSkidding = (isMovingLeft && puppet.speed.x > 0) || (isMovingRight && puppet.speed.x < 0);
+                puppet.isSkiddingSevere = puppet.isSkidding;
                 puppet.isMovingLeft = isMovingLeft;
                 puppet.speed.x = approachLinear(
                     puppet.speed.x,
