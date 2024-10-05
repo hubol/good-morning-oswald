@@ -20,6 +20,14 @@
   "entityTags": ["Terrain", "Player"],
   "layers": [
     {
+      "definition": "entity",
+      "name": "FrontEntities",
+      "gridSize": {"x": 8, "y": 8},
+      "exportID": "13880985",
+      "requiredTags": [],
+      "excludedTags": []
+    },
+    {
       "definition": "decal",
       "name": "FrontDecals",
       "gridSize": {"x": 8, "y": 8},
@@ -50,7 +58,7 @@
       "includeImageSequence": true,
       "scaleable": true,
       "rotatable": true,
-      "tintable": {"enabled": true, "defaultTint": "#ffffff", "rgbLevelValueName": null, "useDefaultTint": true},
+      "tintable": {"enabled": true, "defaultTint": "#ffffff", "rgbLevelValueName": "", "useDefaultTint": true},
       "values": [
         {"name": "name", "definition": "String", "display": 0, "defaults": "", "maxLength": 0, "trimWhitespace": true}
       ]
@@ -64,7 +72,7 @@
       "includeImageSequence": true,
       "scaleable": true,
       "rotatable": true,
-      "tintable": {"enabled": true, "defaultTint": "#ffffff", "rgbLevelValueName": null, "useDefaultTint": true},
+      "tintable": {"enabled": true, "defaultTint": "#ffffff", "rgbLevelValueName": "", "useDefaultTint": true},
       "values": [
         {"name": "name", "definition": "String", "display": 0, "defaults": "", "maxLength": 0, "trimWhitespace": true}
       ]
@@ -75,8 +83,8 @@
       "exportID": "93092164",
       "name": "Player",
       "limit": 1,
-      "size": {"x": 33, "y": 27},
-      "origin": {"x": 12, "y": 25},
+      "size": {"x": 58, "y": 88},
+      "origin": {"x": 30, "y": 56},
       "originAnchored": true,
       "shape": {
         "label": "Rectangle",
@@ -97,9 +105,9 @@
       "resizeableY": false,
       "rotatable": false,
       "rotationDegrees": 360,
-      "canFlipX": true,
+      "canFlipX": false,
       "canFlipY": false,
-      "flipOnlyScales": true,
+      "flipOnlyScales": false,
       "canSetColor": false,
       "hasNodes": false,
       "hasUid": false,
@@ -112,8 +120,8 @@
         {"name": "depth", "definition": "Integer", "display": 0, "defaults": 0, "bounded": false, "min": -100, "max": 100}
       ],
       "tintable": {"enabled": false, "defaultTint": "#ffffff", "rgbLevelValueName": null, "useDefaultTint": false},
-      "texture": "preview-images/iguana.png",
-      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAbCAYAAADyBeakAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjHxIGmVAAABRUlEQVRIS9WWOw7CMAyGOyM2rtGNGzCzcw3EUbpxB0QlVq6QOwU5wpXr2onjlEpEstq0fnz9nabtuoYR+lOk1pDKF8oBcO7L5ojSADYDKQFsAvJziHB9R2pSp4oQz10MGct2nwPgnAepEIXiHGwBowGYQSoBEGgCkQAoJdzPtqUAEL+DKkGvpdyWdaD1MbUmA4HFaFF+rR2iAgCKA7A0Fkpo8ostMUDcL2NEAwg6RyARorRQp/v/AkHlr2rHGkrwgtLbgeukrR2wwzr3CNNesZYauBgpLCzOBYS0X5ghjGpgYRWgGaISBFQQN8CqJ2df21lsy1d0DTUcP2lyCD7V/hxm/xaSUtSn6x+yxF4ySI6mtYn6JAA0b1EaR5PjOS9i8XGzSMk5iMWnqTW8wPA6prbA8TYckuQWn+TrHbQAFC5BaD61EB8Fye3VQQj6XgAAAABJRU5ErkJggg=="
+      "texture": "preview-images/player.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAABYCAYAAACkh+R5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALkSURBVHhe7ZlLUuQwDIa72cB5YMGuWc6caQ7AmWBJ71gw55lZAUpZKcf4oUiWrbj8VaUSmiT4yy8/OpxPB+Ht/vLpDqM8/b1mXcyLlgRDUsKmRfdKIjHZG7c3B1cyhclEa0iGqZpLtHaSiClRLUnAbB+tjRlRzTQBtcFIu+EU/AGJLWpBpIRI9AiCCFv0qJIASfRIgsgu0daCl+d3d5Tn+ufRHaUhi5qT/PXPHXzzerfsUsKhJBAVNS2JOFkgFCaJtpSklmpUFIjIxiSBzYetJMmCiCd6fXha9pePt2XvyyLn3//ziWqKrg0LiTT0B04UJZGcLOALr2vdLpJAqiwro76oT5UppIObGMLDWkQ10gTBRTLSiFCOMi9yHsjny+3qVTVRlEul2BOxaA05yrXZfg4UypctKpXboDggYfne7O2fVQWpUKagAuREawlKRlm/fIul7AGpnkuJiuWCsgxFS5P+hlKJZ+6RFa0tCaREKUkXU8yIJktXqx/Gyo9azpKy/5FoVUHCaLq38clUC6W/SVQrxVos7WOOwKtoF8nvRlP/7ua8UJYgv3yN8deEVcmVLjMZLuyVkQgnCYt5yoK+BrqisdSYSUofin6iIOZvnehTugGlpKTlDa9U1ncqagNSAV8iHIFDQc7MgO+NuosClMS40x+KmijdkoRUElgPgJ6p1saXBDY/ACPIhpKAidKtSUwSiH54xFRTgkjyl0eRLQki2ZOsy1IlgeKJFmX3CCLkCywIcwQR1oW9pJuL+rSUlogON4+mmKKjMUVHY4qOxmFEJXMoMBMdjSk6Gl1F4X2u9C08lW6irQSRpqIwReDmPmpG0++jMUHq9XMeJTJFqbTqb9JXNjPR0ZiirWjVx2eio9FUtNe/MoBDJSp5UCZE9wxIXNnmotDQHiXcLVGJLOdhdS3dlsmaGYygn2ouHsyIalPtCXLLMJVi6X5701cplT3SpQbH7sUpcRXRkFqN5XM6fQEW/WoEUDutfwAAAABJRU5ErkJggg=="
     },
     {
       "exportID": "93117141",
