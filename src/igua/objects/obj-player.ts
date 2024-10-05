@@ -151,7 +151,17 @@ function objPlayerPuppet() {
 
 function objPlayer() {
     const puppet = objPlayerPuppet()
-        .mixin(mxnPhysics, { gravity: PlayerConsts.Gravity, physicsRadius: 10 })
+        .mixin(mxnPhysics, {
+            gravity: PlayerConsts.Gravity,
+            physicsRadius: 10,
+            onMove(event) {
+                if (event.hitGround && !event.previousOnGround) {
+                    for (let i = -2; i <= 2; i++) {
+                        objFxHeart().at(puppet).add(i * 9, 16).show();
+                    }
+                }
+            },
+        })
         .merge({
             get hasControl() {
                 return !Cutscene.isPlaying;

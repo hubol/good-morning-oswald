@@ -19,10 +19,10 @@ export function objFxHeart() {
             self.y += yd;
         })
         .coro(function* (self) {
-            self.scale.at(0, 0);
-            yield lerp(self.scale, "x").to(Rng.choose(1, -1)).over(Rng.float(100, 300));
+            yield lerp(self.scale, "x").to(Rng.choose(1, -1)).over(Rng.float(100, 500));
             yield sleep(Rng.float(400, 800));
-            yield lerp(self.scale, "x").to(0).over(Rng.float(100, 300));
+            yield lerp(self.scale, "x").to(0).over(Rng.float(100, 500));
             self.destroy();
-        });
+        })
+        .scaled(0, 0);
 }
