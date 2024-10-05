@@ -15,7 +15,6 @@ export function objFxHeart() {
         .tinted(tints[tintIndex++ % tints.length])
         .step(self => {
             self.scale.y = Math.abs(self.scale.x);
-            console.log(self.scale.y);
             self.y += yd;
         })
         .coro(function* (self) {

@@ -1,4 +1,4 @@
-import { DisplayObject, Sprite, Texture } from "pixi.js";
+import { Container, DisplayObject, Sprite, Texture } from "pixi.js";
 import { scene } from "../globals";
 import { ErrorReporter } from "../../lib/game-engine/error-reporter";
 
@@ -90,7 +90,13 @@ export namespace OgmoFactory {
         return obj as any;
     }
 
-    export function createDecal(texture: Texture, decal: OgmoFactory.Decal) {
+    const stagesByLayerName = {
+        get SkyDecals() {
+            return scene.sky;
+        },
+    } satisfies Record<string, Container>;
+
+    export function createDecal(texture: Texture, decal: OgmoFactory.Decal, layerName: string) {
         const spr = Sprite.from(texture).at(decal.x, decal.y);
         spr.scale.set(decal.scaleX, decal.scaleY);
         spr.angle = decal.rotation;
@@ -100,7 +106,7 @@ export namespace OgmoFactory {
             spr.tint = decal.tint;
         }
 
-        return spr.show();
+        return spr.show(stagesByLayerName[layerName]);
     }
 
     export function createLevel<TFn extends (...args: any[]) => any>(level: OgmoFactory.Level, fn: TFn): TFn {

@@ -16,6 +16,9 @@ export function objCamera() {
         self.x = Math.max(0, Math.min(self.x, scene.level.width - renderer.width));
         self.y = Math.max(0, Math.min(self.y, scene.level.height - renderer.height));
 
+        scene.sky.x = Math.round(-self.x * 0.3);
+        scene.sky.y = Math.round(-self.y * 0.8);
+
         scene.stage.x = Math.round(-self.x);
         scene.stage.y = Math.round(-self.y);
     }, StepOrder.Camera);

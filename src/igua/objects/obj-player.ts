@@ -250,6 +250,8 @@ function objPlayer() {
             }
         });
 
+    console.log(puppet);
+
     return puppet;
 }
 
