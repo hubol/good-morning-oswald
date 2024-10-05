@@ -1,0 +1,16 @@
+import "./js-array";
+import "./js-array-vector";
+import "./pixi-anchored";
+import "./pixi-collision";
+import "./pixi-color";
+import "./pixi-container-flip";
+import "./pixi-displayobject-coro";
+import "./pixi-displayobject-convenience";
+import "./pixi-displayobject-dispatch";
+import "./pixi-displayobject-mixin";
+import "./pixi-displayobject-ticker";
+import "./pixi-displayobject-track";
+import "./pixi-rectangle";
+import "./pixi-rounding";
+import "./pixi-texture";
+import "./pixi-vector";

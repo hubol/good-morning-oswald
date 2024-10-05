@@ -1,0 +1,53 @@
+{
+	"$schema": "node_modules/@hubol/smooch/schema.json",
+	"textures": [
+		{
+			"glob": "raw/textures/**/*.png",
+			"atlas": {
+				"directory": "src/assets/generated/textures",
+				"filePrefix": "atlas"
+			},
+			"template": {
+				"out": "src/assets/generated/textures/generated-texture-data.ts",
+				"program": "src/assets/template/textures.js"
+			}
+		}
+	],
+	"audioFiles": [
+		{
+			"glob": "raw/sounds/**/*.{wav,flac}",
+			"convert": [
+				{
+					"zip": "src/assets/generated/sounds/sounds-ogg.zip",
+					"format": "ogg"
+				}
+			],
+			"template": {
+				"out": "src/assets/generated/sounds/generated-sfx-data.ts",
+				"program": "src/assets/template/sounds.js"
+			}
+		},
+		{
+			"glob": "raw/music/**/*.{wav,flac}",
+			"convert": [
+				{
+					"directory": "src/assets/generated/music/ogg",
+					"format": "ogg"
+				}
+			],
+			"template": {
+				"out": "src/assets/generated/music/generated-music-data.ts",
+				"program": "src/assets/template/music.js"
+			}
+		}
+	],
+	"jsonFiles": [
+		{
+			"glob": "raw/ogmo/levels/**/*.json",
+			"template": {
+				"out": "src/assets/generated/levels/generated-level-data.ts",
+				"program": "src/assets/template/levels.js"
+			}
+		}
+	]
+}

@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: sans-serif;
+    height: 100%;
+    overflow: hidden;
+    --bg-color: #3870A8;
+    --bg-color-dark: #205088;
+    --loading-color: #f8b0b4;
+}
+
+#game_canvas {
+    /* see: http://jsfiddle.net/namuol/VAXrL/1459/ */
+    image-rendering: -moz-crisp-edges;
+    image-rendering: pixelated;
+
+    cursor: none;
+
+    border-radius: 4px;
+}
+
+#fatal_error {
+    background-color: #1E1E1E;
+    color: #20d058;
+
+    font-family: monospace;
+    font-size: 120%;
+    text-align: center;
+
+    padding: 0.8em;
+    animation: fatal_error_glow 2s infinite alternate-reverse;
+
+    flex-direction: column;
+    justify-content: center;
+}
+
+@keyframes fatal_error_glow {
+    0% {
+        text-shadow: 0 0 0.2em #387526a0;
+    }
+    100% {
+        text-shadow: 0 0 0.7em #387526;
+    }
+}
+
+#fatal_error h1, #fatal_error h2 {
+    opacity: 0;
+    animation: fatal_error_in 0.7s forwards;
+}
+
+#fatal_error h1 {
+    margin-bottom: 1em;
+    animation-delay: 0.2s;
+}
+
+#fatal_error h2 {
+    animation-delay: 0.4s;
+    white-space: pre-wrap;
+}
+
+@keyframes fatal_error_in {
+    0% {
+        transform: translate(0, 0.5em);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0);
+        opacity: 100%;
+    }
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    height: 100%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+noscript {
+    font-size: 4vw;
+    font-weight: bold;
+    background-color: #d05050;
+    color: #f0f0d0;
+    padding: .1em .2em;
+}
+
+#loading {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    justify-content: center;
+    --color: var(--loading-color);
+}
+
+#user_gesture {
+    background: none;
+    border: none;
+    opacity: 0;
+    pointer-events: none;
+    font-size: 10vw;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    color: var(--color);
+}
+
+#user_gesture.show {
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: unset;
+}
+
+#user_gesture.hide {
+    opacity: 1;
+    overflow: clip;
+}
+
+#user_gesture span {
+    position: relative;
+    top: 0;
+}
+
+#user_gesture.hide span {
+    top: 1em;
+    transition: top 0.2s linear;
+}
+
+#loading_bar {
+    position: relative;
+}
+
+#loading_bar > * {
+    position: absolute;
+}
+
+#loading_bar .front {
+    width: 0px;
+    background-color: var(--color);
+    height: 1px;
+}
+
+#loading.hide .front {
+    transform-origin: 100% 0%;
+    transform: scaleX(0);
+    transition: transform 0.2s;
+}
+
+/* https://codepen.io/stg/pen/YGRpZJ */
+#preload {
+    width: 100%;
+    height: 1px;
+
+    opacity: 0;
+    transition: opacity 0.25s;
+
+    --ant-width: 1px;
+    --ant-size: 16px;
+
+    --front: var(--loading-color);
+    --back: #00000000;
+    
+    background-size: var(--ant-size) var(--ant-width);
+
+    background-position: 0 0;
+    background-repeat: repeat-x;
+    animation: marching_ants 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    background-image: 
+      linear-gradient(to right, var(--front) 50%, var(--back) 50%);
+}
+
+@keyframes marching_ants {
+    0% {
+      background-position: 0 0;
+    } 
+    100% {
+      background-position: calc(var(--ant-size) * 2) 0;
+    }
+}
+
+@media (max-width: 1400px) {
+    body .debug_panel {
+        flex-grow: 2;
+    }
+}
+
+@media (max-width: 1200px) {
+    body {
+        flex-direction: column;
+    }
+
+    body .debug_panel {
+        max-width: unset;
+        width: unset;
+    }
+}

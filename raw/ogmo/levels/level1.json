@@ -1,0 +1,97 @@
+{
+  "ogmoVersion": "3.4.0-hubol",
+  "width": 512,
+  "height": 1064,
+  "offsetX": 0,
+  "offsetY": 0,
+  "values": {"Terrain Color": "#b82828"},
+  "backgroundColor": "#184880",
+  "layers": [
+    {
+      "name": "FrontDecals",
+      "_eid": "02386446",
+      "offsetX": 0,
+      "offsetY": 0,
+      "gridCellWidth": 8,
+      "gridCellHeight": 8,
+      "gridCellsX": 64,
+      "gridCellsY": 133,
+      "decals": [],
+      "folder": "../textures"
+    },
+    {
+      "name": "Entities",
+      "_eid": "02302709",
+      "offsetX": 0,
+      "offsetY": 0,
+      "gridCellWidth": 8,
+      "gridCellHeight": 8,
+      "gridCellsX": 64,
+      "gridCellsY": 133,
+      "entities": [
+        {
+          "name": "Block",
+          "id": 12,
+          "_eid": "93117141",
+          "x": 80,
+          "y": 576,
+          "width": 264,
+          "height": 80,
+          "originX": 0,
+          "originY": 0,
+          "tint": "#b82828",
+          "values": {"name": "", "depth": 0, "visible": true}
+        },
+        {
+          "name": "Slope",
+          "id": 13,
+          "_eid": "95675713",
+          "x": 232,
+          "y": 544,
+          "width": 32,
+          "height": 32,
+          "flippedX": false,
+          "flippedY": false,
+          "tint": "#b82828",
+          "values": {"name": "", "depth": 0}
+        },
+        {
+          "name": "Block",
+          "id": 14,
+          "_eid": "93117141",
+          "x": 264,
+          "y": 544,
+          "width": 80,
+          "height": 32,
+          "originX": 0,
+          "originY": 0,
+          "tint": "#b82828",
+          "values": {"name": "", "depth": 0, "visible": true}
+        },
+        {
+          "name": "Player",
+          "id": 15,
+          "_eid": "93092164",
+          "x": 144,
+          "y": 560,
+          "originX": 12,
+          "originY": 25,
+          "flippedX": false,
+          "values": {"name": "", "depth": 0}
+        }
+      ]
+    },
+    {
+      "name": "BackgroundDecals",
+      "_eid": "64691217",
+      "offsetX": 0,
+      "offsetY": 0,
+      "gridCellWidth": 8,
+      "gridCellHeight": 8,
+      "gridCellsX": 64,
+      "gridCellsY": 133,
+      "decals": [],
+      "folder": "../textures"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="IguaRPG 2 - Alpha Ver.">
+    <meta property="og:determiner" content="">
+    <meta property="og:description" content="Be an iguana and save the world from evil again.">
+    <meta property="og:type" content="game">
+    <meta property="og:image" content="https://github.com/hubol/igua-rpg/raw/master/misc/card.png">
+    <title>IguaRPG 2 - Alpha Ver.</title>
+    <link href="index.css" rel="stylesheet" type="text/css">
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="touch-icon-ios.png"> -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+
+<body>
+    <main>
+        <div id="loading">
+            <button id="user_gesture">
+                <span>Please Click</span>
+            </button>
+            <div id="loading_bar">
+                <div id="preload"></div>
+                <div class="front"></div>
+            </div>
+        </div>
+    </main>
+    <noscript>JavaScript&trade; is required to play this game.</noscript>
+</body>
+
+<script>setTimeout(() => typeof preload !== 'undefined' && !preload.style.opacity && (preload.style.opacity = '1'), 250)</script>
+<script src="index.js" type="module"></script>
+</html>
