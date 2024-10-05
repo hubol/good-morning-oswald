@@ -10,17 +10,20 @@ const PlayerConsts = {
     WalkingTopSpeed: 3,
     WalkingAcceleration: 0.3,
     WalkingDeceleration: 0.2,
+    SkiddingDelta: 0.1,
     JumpSpeed: -3,
     VariableJumpSpeedMaximum: -1.5,
     VariableJumpDelta: -0.095,
     Gravity: 0.15,
 };
 
-const [txLegsRest, txLegsWalk, txHead, txSclera, txFace, txPp, txHat] = Tx.Player.Layers.split({ width: 86 });
+const [txLegsRest, txLegsWalk, txHead, txSclera, txFace, txPp, txHat, txLegsSkid] = Tx.Player.Layers.split({
+    width: 86,
+});
 
 function objLegs() {
     let subimage = -1;
-    const legsObj = container(Sprite.from(txLegsRest), Sprite.from(txLegsWalk));
+    const legsObj = container(Sprite.from(txLegsRest), Sprite.from(txLegsWalk), Sprite.from(txLegsSkid));
 
     const c = container(legsObj, Sprite.from(txPp)).merge({
         get subimage() {
@@ -47,12 +50,14 @@ function objHead() {
     const scleraObj = Sprite.from(txSclera).mixin(mxnBoilPivot);
     const faceObj = Sprite.from(txFace).mixin(mxnBoilPivot);
     const hatObj = Sprite.from(txHat);
-    return container(Sprite.from(txHead), hatObj, scleraObj, faceObj).mixin(mxnBoilPivot)
+    const headObj = Sprite.from(txHead);
+    return container(headObj, hatObj, scleraObj, faceObj).mixin(mxnBoilPivot)
         .merge({ isMovingLeft: false })
         .step(self => {
             faceObj.x = approachLinear(faceObj.x, self.isMovingLeft ? -16 : 0, 1);
             scleraObj.x = approachLinear(scleraObj.x, self.isMovingLeft ? -16 : 0, 2);
             hatObj.flipH(scleraObj.x < -8 ? -1 : 1);
+            headObj.flipH(faceObj.x < -15 ? -1 : 1);
         });
 }
 
@@ -61,11 +66,11 @@ function objPlayerPuppet() {
     const headObj = objHead().at(0, 16);
     return container(legsObj, headObj)
         .pivoted(45, 69 + 24)
-        .merge({ isMovingLeft: false, pedometer: 0 })
+        .merge({ isMovingLeft: false, pedometer: 0, isSkidding: false })
         .step(self => {
             headObj.isMovingLeft = self.isMovingLeft;
             legsObj.flipH(self.isMovingLeft ? -1 : 1);
-            legsObj.subimage = Math.abs(Math.round(self.pedometer)) % 2;
+            legsObj.subimage = self.isSkidding ? 2 : Math.abs(Math.round(self.pedometer)) % 2;
         });
 }
 
@@ -83,18 +88,22 @@ function objPlayer() {
             const isMovingRight = hasControl && Input.isDown("MoveRight");
 
             if (isMovingLeft == isMovingRight) {
+                puppet.isSkidding = false;
                 puppet.speed.x = approachLinear(puppet.speed.x, 0, PlayerConsts.WalkingDeceleration);
             }
             else {
+                puppet.isSkidding = (isMovingLeft && puppet.speed.x > 0) || (isMovingRight && puppet.speed.x < 0);
                 puppet.isMovingLeft = isMovingLeft;
                 puppet.speed.x = approachLinear(
                     puppet.speed.x,
                     PlayerConsts.WalkingTopSpeed * (isMovingLeft ? -1 : 1),
-                    PlayerConsts.WalkingAcceleration,
+                    puppet.isSkidding ? PlayerConsts.SkiddingDelta : PlayerConsts.WalkingAcceleration,
                 );
             }
 
-            puppet.pedometer = puppet.speed.x === 0 ? 0 : (puppet.pedometer + puppet.speed.x * 0.05);
+            puppet.pedometer = (puppet.speed.x === 0 || puppet.isSkidding)
+                ? 0
+                : (puppet.pedometer + puppet.speed.x * 0.05);
 
             if (
                 hasControl && !puppet.isOnGround && puppet.speed.y < PlayerConsts.VariableJumpSpeedMaximum
