@@ -51,26 +51,45 @@ function objHead() {
     const faceObj = Sprite.from(txFace).mixin(mxnBoilPivot);
     const hatObj = Sprite.from(txHat);
     const headObj = Sprite.from(txHead);
-    return container(headObj, hatObj, scleraObj, faceObj).mixin(mxnBoilPivot)
-        .merge({ isMovingLeft: false })
+
+    const visualHeadObj = container(headObj, hatObj, scleraObj, faceObj)
+        .mixin(mxnBoilPivot)
+        .at(0, 10);
+
+    return container(visualHeadObj)
+        .merge({ isLookingLeft: false })
         .step(self => {
-            faceObj.x = approachLinear(faceObj.x, self.isMovingLeft ? -16 : 0, 1);
-            scleraObj.x = approachLinear(scleraObj.x, self.isMovingLeft ? -16 : 0, 2);
+            faceObj.x = approachLinear(faceObj.x, self.isLookingLeft ? -16 : 0, 1);
+            scleraObj.x = approachLinear(scleraObj.x, self.isLookingLeft ? -16 : 0, 2);
             hatObj.flipH(scleraObj.x < -8 ? -1 : 1);
             headObj.flipH(faceObj.x < -15 ? -1 : 1);
         });
 }
 
 function objPlayerPuppet() {
+    const headRestY = 0;
+    const headDuckY = 17;
+
     const legsObj = objLegs();
-    const headObj = objHead().at(0, 16);
+    const headObj = objHead();
     return container(legsObj, headObj)
         .pivoted(45, 69 + 24)
-        .merge({ isMovingLeft: false, pedometer: 0, isSkidding: false })
+        .merge({ isMovingLeft: false, pedometer: 0, isSkidding: false, isDucking: false })
         .step(self => {
-            headObj.isMovingLeft = self.isMovingLeft;
+            headObj.isLookingLeft = self.isMovingLeft;
             legsObj.flipH(self.isMovingLeft ? -1 : 1);
-            legsObj.subimage = self.isSkidding ? 2 : Math.abs(Math.round(self.pedometer)) % 2;
+
+            headObj.y = approachLinear(headObj.y, self.isDucking ? headDuckY : headRestY, self.isDucking ? 2 : 1);
+
+            if (self.isSkidding) {
+                legsObj.subimage = 2;
+            }
+            else if (self.isDucking) {
+                legsObj.subimage = 0;
+            }
+            else {
+                legsObj.subimage = Math.abs(Math.round(self.pedometer)) % 2;
+            }
         });
 }
 
@@ -84,12 +103,17 @@ function objPlayer() {
         })
         .step(() => {
             const hasControl = puppet.hasControl;
-            const isMovingLeft = hasControl && Input.isDown("MoveLeft");
-            const isMovingRight = hasControl && Input.isDown("MoveRight");
+            const isDucking = hasControl && puppet.isOnGround && Input.isDown("Duck");
+            const isMovingLeft = hasControl && !isDucking && Input.isDown("MoveLeft");
+            const isMovingRight = hasControl && !isDucking && Input.isDown("MoveRight");
 
             if (isMovingLeft == isMovingRight) {
-                puppet.isSkidding = false;
-                puppet.speed.x = approachLinear(puppet.speed.x, 0, PlayerConsts.WalkingDeceleration);
+                puppet.isSkidding = isDucking && puppet.speed.x !== 0;
+                puppet.speed.x = approachLinear(
+                    puppet.speed.x,
+                    0,
+                    puppet.isSkidding ? PlayerConsts.SkiddingDelta : PlayerConsts.WalkingDeceleration,
+                );
             }
             else {
                 puppet.isSkidding = (isMovingLeft && puppet.speed.x > 0) || (isMovingRight && puppet.speed.x < 0);
@@ -101,6 +125,8 @@ function objPlayer() {
                 );
             }
 
+            puppet.isDucking = isDucking;
+
             puppet.pedometer = (puppet.speed.x === 0 || puppet.isSkidding)
                 ? 0
                 : (puppet.pedometer + puppet.speed.x * 0.05);
@@ -111,7 +137,7 @@ function objPlayer() {
             ) {
                 puppet.speed.y += PlayerConsts.VariableJumpDelta;
             }
-            if (hasControl && puppet.isOnGround && Input.justWentDown("Jump")) {
+            if (hasControl && puppet.isOnGround && !isDucking && Input.justWentDown("Jump")) {
                 puppet.speed.y = PlayerConsts.JumpSpeed;
             }
         });
