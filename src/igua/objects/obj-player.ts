@@ -15,7 +15,7 @@ const PlayerConsts = {
     SkiddingDelta: 0.1,
     JumpSpeed: -3,
     VariableJumpSpeedMaximum: -1.5,
-    VariableJumpDelta: -0.095,
+    VariableJumpDelta: -0.115,
     Gravity: 0.15,
 };
 
