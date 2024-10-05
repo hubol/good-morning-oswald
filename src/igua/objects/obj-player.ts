@@ -65,7 +65,7 @@ function objLegs() {
         vnew(0, 1),
         vnew(),
         vnew(),
-        vnew(),
+        vnew(6, -1),
     ];
 
     const ppObj = Sprite.from(txPp);
