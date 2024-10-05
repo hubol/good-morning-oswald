@@ -16,7 +16,7 @@ const PlayerConsts = {
     Gravity: 0.15,
 };
 
-const [txLegsRest, txLegsWalk, txHead, txSclera, txFace, txPp] = Tx.Player.Layers.split({ width: 86 });
+const [txLegsRest, txLegsWalk, txHead, txSclera, txFace, txPp, txHat] = Tx.Player.Layers.split({ width: 86 });
 
 function objLegs() {
     let subimage = -1;
@@ -46,11 +46,27 @@ function objLegs() {
 function objHead() {
     const scleraObj = Sprite.from(txSclera).mixin(mxnBoilPivot);
     const faceObj = Sprite.from(txFace).mixin(mxnBoilPivot);
-    return container(Sprite.from(txHead), scleraObj, faceObj).mixin(mxnBoilPivot);
+    const hatObj = Sprite.from(txHat);
+    return container(Sprite.from(txHead), hatObj, scleraObj, faceObj).mixin(mxnBoilPivot)
+        .merge({ isMovingLeft: false })
+        .step(self => {
+            faceObj.x = approachLinear(faceObj.x, self.isMovingLeft ? -16 : 0, 1);
+            scleraObj.x = approachLinear(scleraObj.x, self.isMovingLeft ? -16 : 0, 2);
+            hatObj.flipH(scleraObj.x < -8 ? -1 : 1);
+        });
 }
 
 function objPlayerPuppet() {
-    return container(objLegs(), objHead().at(0, 16)).pivoted(45, 69);
+    const legsObj = objLegs();
+    const headObj = objHead().at(0, 16);
+    return container(legsObj, headObj)
+        .pivoted(45, 69 + 24)
+        .merge({ isMovingLeft: false, pedometer: 0 })
+        .step(self => {
+            headObj.isMovingLeft = self.isMovingLeft;
+            legsObj.flipH(self.isMovingLeft ? -1 : 1);
+            legsObj.subimage = Math.abs(Math.trunc(self.pedometer)) % 2;
+        });
 }
 
 function objPlayer() {
@@ -70,12 +86,15 @@ function objPlayer() {
                 puppet.speed.x = approachLinear(puppet.speed.x, 0, PlayerConsts.WalkingDeceleration);
             }
             else {
+                puppet.isMovingLeft = isMovingLeft;
                 puppet.speed.x = approachLinear(
                     puppet.speed.x,
                     PlayerConsts.WalkingTopSpeed * (isMovingLeft ? -1 : 1),
                     PlayerConsts.WalkingAcceleration,
                 );
             }
+
+            puppet.pedometer = puppet.speed.x === 0 ? 0 : (puppet.pedometer + puppet.speed.x * 0.05);
 
             if (
                 hasControl && !puppet.isOnGround && puppet.speed.y < PlayerConsts.VariableJumpSpeedMaximum
