@@ -3,7 +3,7 @@ import { lerp } from "../../lib/game-engine/routines/lerp";
 import { sleep } from "../../lib/game-engine/routines/sleep";
 import { blendPixiColor } from "../../lib/pixi/blend-pixi-color";
 import { container } from "../../lib/pixi/container";
-import { Cutscene, forceGameLoop } from "../globals";
+import { Cutscene, forceGameLoop, scene } from "../globals";
 import { playerObj } from "../objects/obj-player";
 
 export function scnHome() {
@@ -30,4 +30,6 @@ export function scnHome() {
         HomeGoodMorning.visible = true;
         yield sleep(500);
     });
+
+    scene.ticker.tick();
 }
