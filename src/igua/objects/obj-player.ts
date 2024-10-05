@@ -104,7 +104,8 @@ function objHead() {
 
 function objPlayerPuppet() {
     const headRestY = 0;
-    const headDuckY = 17;
+    const headLandingY = 5;
+    const headDownY = 17;
 
     let headY = 0;
 
@@ -120,6 +121,7 @@ function objPlayerPuppet() {
             isSkiddingSevere: false,
             isJumping: false,
             isFalling: false,
+            landingFrames: 0,
         })
         .step(self => {
             headObj.isLookingLeft = self.isMovingLeft;
@@ -128,8 +130,18 @@ function objPlayerPuppet() {
 
             const skidX = 7 * (self.isMovingLeft ? -1 : 1);
             headObj.x = approachLinear(headObj.x, self.isSkiddingSevere ? skidX : 0, self.isSkiddingSevere ? 1 : 2);
-            headY = approachLinear(headY, self.isDucking ? headDuckY : headRestY, self.isDucking ? 2 : 3);
-            headObj.y = Math.min(headDuckY, Math.round(headY / 3) * 3);
+            if (self.isDucking) {
+                headY = approachLinear(headY, headDownY, 2);
+                headObj.y = Math.min(headDownY, Math.round(headY / 3) * 3);
+            }
+            else if (self.landingFrames > 0) {
+                headY = headLandingY;
+                headObj.y = headY;
+            }
+            else {
+                headY = approachLinear(headY, headRestY, 3);
+                headObj.y = headY;
+            }
 
             if (self.isSkidding) {
                 legsObj.subimage = 2;
@@ -146,6 +158,8 @@ function objPlayerPuppet() {
             else {
                 legsObj.subimage = Math.abs(Math.round(self.pedometer)) % 2;
             }
+
+            self.landingFrames--;
         });
 }
 
@@ -156,6 +170,7 @@ function objPlayer() {
             physicsRadius: 10,
             onMove(event) {
                 if (event.hitGround && !event.previousOnGround) {
+                    puppet.landingFrames = 8;
                     for (let i = -2; i <= 2; i++) {
                         objFxHeart().at(puppet).add(i * 9, 16).show();
                     }
