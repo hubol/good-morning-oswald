@@ -1,11 +1,11 @@
-import { DisplayObject, Sprite } from "pixi.js";
+import { Color, DisplayObject, Sprite } from "pixi.js";
 import { Cutscene, Input, scene } from "../globals";
 import { mxnPhysics } from "../mixins/mxn-physics";
 import { container } from "../../lib/pixi/container";
 import { approachLinear } from "../../lib/math/number";
 import { Tx } from "../../assets/textures";
 import { mxnBoilPivot } from "../mixins/mxn-boil-pivot";
-import { vnew } from "../../lib/math/vector-type";
+import { Vector, vnew } from "../../lib/math/vector-type";
 import { objFxHeart } from "./fx/obj-fx-heart";
 
 const PlayerConsts = {
@@ -36,6 +36,37 @@ const [
         width: 86,
     });
 
+const Colors = {
+    Yellow: 0xFFB807,
+    Red: 0xC1323E,
+};
+
+function objBigPp() {
+    let _angle = 0;
+    const stroke = Sprite.from(Tx.Player.Penis).at(2, 1).pivoted(3, 2).tinted(Colors.Red);
+    const fill = Sprite.from(Tx.Player.Penis).pivoted(3, 2).tinted(Colors.Yellow);
+
+    return container(stroke, fill)
+        .merge({
+            setAngle(angle: number) {
+                _angle = angle;
+                stroke.angle = angle;
+                fill.angle = angle;
+            },
+            setVirtualAngle(virtualAngle: number, angle: number) {
+                _angle = virtualAngle;
+                stroke.angle = angle;
+                fill.angle = angle;
+            },
+            getAngle() {
+                return _angle;
+            },
+            setStrokeDirection(v: Vector) {
+                stroke.at(v);
+            },
+        });
+}
+
 function objLegs() {
     let subimage = -1;
     const legsObj = container(
@@ -46,6 +77,7 @@ function objLegs() {
         Sprite.from(txLegsWalk),
         Sprite.from(txLegsFall),
         Sprite.from(txLegsDuckSkid),
+        Sprite.from(txLegsRest),
     );
 
     const positions = [
@@ -56,6 +88,7 @@ function objLegs() {
         vnew(0, -4),
         vnew(),
         vnew(0, 13),
+        vnew(),
     ];
 
     const ppPositions = [
@@ -66,11 +99,37 @@ function objLegs() {
         vnew(),
         vnew(),
         vnew(6, -1),
+        vnew(),
+    ];
+
+    const bigPpAngles = [
+        null,
+        -50,
+        -25,
+        0,
+        20,
+        -80,
+        -40,
+        20,
+    ];
+
+    const bigPpStrokeDirections: Vector[] = [
+        vnew(2, 1),
+        vnew(2, 1),
+        vnew(2, 0),
+        vnew(2, 1),
+        vnew(2, 1),
+        vnew(2, -2),
+        vnew(2, 0),
+        vnew(2, 1),
     ];
 
     const ppObj = Sprite.from(txPp);
+    const bigPpObj = objBigPp();
 
-    const c = container(legsObj, ppObj).merge({
+    let delta = 0;
+
+    const c = container(legsObj, ppObj, bigPpObj).merge({
         get subimage() {
             return subimage;
         },
@@ -85,8 +144,28 @@ function objLegs() {
             legsObj.children[value].visible = true;
             c.at(positions[value] ?? positions[0]);
             ppObj.at(ppPositions[value] ?? ppPositions[0]);
+            bigPpObj.at(ppObj).add(45, 87);
+            const angle = bigPpAngles[value];
+            if (angle !== null) {
+                bigPpObj.setAngle(bigPpAngles[value] ?? 0);
+            }
+            bigPpObj.setStrokeDirection(bigPpStrokeDirections[value] ?? bigPpStrokeDirections[0]);
         },
-    });
+    })
+        .step(() => {
+            {
+                const angle = bigPpAngles[subimage];
+                if (angle !== null) {
+                    delta = 0;
+                    return;
+                }
+            }
+
+            const currentAngle = bigPpObj.getAngle();
+            delta -= Math.sign(currentAngle);
+            bigPpObj.setVirtualAngle(currentAngle + delta, Math.round((currentAngle + delta) / 15) * 15);
+            delta = approachLinear(delta, 0, 0.2);
+        });
 
     c.subimage = 0;
 
@@ -171,7 +250,12 @@ function objPlayerPuppet() {
                 legsObj.subimage = 5;
             }
             else {
-                legsObj.subimage = Math.abs(Math.round(self.pedometer)) % 2;
+                if (self.pedometer === 0) {
+                    legsObj.subimage = 0;
+                }
+                else {
+                    legsObj.subimage = Math.abs(Math.round(self.pedometer)) % 2 === 0 ? 7 : 1;
+                }
             }
 
             self.landingFrames--;
