@@ -65,7 +65,7 @@ function objPlayerPuppet() {
         .step(self => {
             headObj.isMovingLeft = self.isMovingLeft;
             legsObj.flipH(self.isMovingLeft ? -1 : 1);
-            legsObj.subimage = Math.abs(Math.trunc(self.pedometer)) % 2;
+            legsObj.subimage = Math.abs(Math.round(self.pedometer)) % 2;
         });
 }
 

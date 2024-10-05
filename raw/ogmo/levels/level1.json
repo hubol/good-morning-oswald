@@ -90,7 +90,68 @@
       "gridCellHeight": 8,
       "gridCellsX": 64,
       "gridCellsY": 133,
-      "decals": [],
+      "decals": [
+        {
+          "x": 142,
+          "y": 573,
+          "scaleX": 1,
+          "scaleY": 1,
+          "rotation": 0,
+          "tint": "#b82828",
+          "texture": "terrain/grass1.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
+        },
+        {
+          "x": 315,
+          "y": 541,
+          "scaleX": -1,
+          "scaleY": 1,
+          "rotation": 0,
+          "tint": "#b82828",
+          "texture": "terrain/grass1.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
+        },
+        {
+          "x": 347,
+          "y": 599,
+          "scaleX": -1,
+          "scaleY": 1,
+          "rotation": 95.45396357814825,
+          "tint": "#b82828",
+          "texture": "terrain/grass1.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
+        },
+        {
+          "x": 284,
+          "y": 656,
+          "scaleX": 1,
+          "scaleY": -1,
+          "rotation": 179.39227393151708,
+          "tint": "#b82828",
+          "texture": "terrain/grass1.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
+        },
+        {
+          "x": 175,
+          "y": 655,
+          "scaleX": 1,
+          "scaleY": -1,
+          "rotation": 179.39227393151708,
+          "tint": "#b82828",
+          "texture": "terrain/grass1.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
+        }
+      ],
       "folder": "../textures"
     }
   ]
