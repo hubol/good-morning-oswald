@@ -28,7 +28,7 @@
       "includeImageSequence": true,
       "scaleable": true,
       "rotatable": true,
-      "tintable": {"enabled": true, "defaultTint": "#ffffff", "rgbLevelValueName": null, "useDefaultTint": true},
+      "tintable": {"enabled": true, "defaultTint": "#ffffff", "rgbLevelValueName": null, "useDefaultTint": false},
       "values": [
         {"name": "name", "definition": "String", "display": 0, "defaults": "", "maxLength": 0, "trimWhitespace": true}
       ]
@@ -46,6 +46,20 @@
       "name": "BackgroundDecals",
       "gridSize": {"x": 8, "y": 8},
       "exportID": "64691217",
+      "folder": "../textures",
+      "includeImageSequence": true,
+      "scaleable": true,
+      "rotatable": true,
+      "tintable": {"enabled": true, "defaultTint": "#ffffff", "rgbLevelValueName": null, "useDefaultTint": true},
+      "values": [
+        {"name": "name", "definition": "String", "display": 0, "defaults": "", "maxLength": 0, "trimWhitespace": true}
+      ]
+    },
+    {
+      "definition": "decal",
+      "name": "SkyDecals",
+      "gridSize": {"x": 8, "y": 8},
+      "exportID": "13638381",
       "folder": "../textures",
       "includeImageSequence": true,
       "scaleable": true,

@@ -1,6 +1,6 @@
 // This file is generated
 
-const atlases = [{ url: require("./atlas0.png"), texturesCount: 8 }];
+const atlases = [{ url: require("./atlas0.png"), texturesCount: 9 }];
 
 interface TxData {
   id: string;
@@ -18,18 +18,19 @@ function txs<T>(tx: (data: TxData) => T) {
     },
     Font: {
       Diggit: tx({ id: "Font.Diggit", atlas: 0, x: 947, y: 0, width: 54, height: 8 }),
-      ErotixLight: tx({ id: "Font.ErotixLight", atlas: 0, x: 0, y: 111, width: 160, height: 34 }),
-      Erotix: tx({ id: "Font.Erotix", atlas: 0, x: 161, y: 111, width: 160, height: 34 }),
-      Flaccid: tx({ id: "Font.Flaccid", atlas: 0, x: 448, y: 111, width: 102, height: 24 }),
+      ErotixLight: tx({ id: "Font.ErotixLight", atlas: 0, x: 240, y: 111, width: 160, height: 34 }),
+      Erotix: tx({ id: "Font.Erotix", atlas: 0, x: 401, y: 111, width: 160, height: 34 }),
+      Flaccid: tx({ id: "Font.Flaccid", atlas: 0, x: 688, y: 111, width: 102, height: 24 }),
     },
     Fx: {
+      Cloud: tx({ id: "Fx.Cloud", atlas: 0, x: 0, y: 111, width: 239, height: 39 }),
       Heart: tx({ id: "Fx.Heart", atlas: 0, x: 1002, y: 0, width: 22, height: 19 }),
     },
     Player: {
       Layers: tx({ id: "Player.Layers", atlas: 0, x: 0, y: 0, width: 946, height: 110 }),
     },
     Terrain: {
-      Grass1: tx({ id: "Terrain.Grass1", atlas: 0, x: 322, y: 111, width: 125, height: 18 }),
+      Grass1: tx({ id: "Terrain.Grass1", atlas: 0, x: 562, y: 111, width: 125, height: 18 }),
     },
   };
 }
