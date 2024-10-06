@@ -195,6 +195,16 @@
           "originX": 0,
           "originY": 0,
           "values": {"style": 5555, "name": "", "message": "Heh, freak!@\nNow you have to scrounge@\nfor money like the rest of us.", "messageAlign": "right"}
+        },
+        {
+          "name": "Npc",
+          "id": 16,
+          "_eid": "24158734",
+          "x": 336,
+          "y": 1312,
+          "originX": 0,
+          "originY": 0,
+          "values": {"style": 999999, "name": "DancingNpc", "message": "Hey! Since you're not boxing anymore,@\nmaybe you should try dancing?!", "messageAlign": "center"}
         }
       ]
     },
@@ -1364,7 +1374,7 @@
           "height": 40,
           "originX": 0,
           "originY": 0,
-          "tint": "#b82828",
+          "tint": "#9442ba",
           "values": {"name": "", "depth": 0, "visible": true}
         },
         {
@@ -1550,6 +1560,84 @@
           "originY": 0,
           "tint": "#9f9a20",
           "values": {"name": "", "depth": 0, "visible": true}
+        },
+        {
+          "name": "Block",
+          "id": 60,
+          "_eid": "93117141",
+          "x": 112,
+          "y": 1312,
+          "width": 40,
+          "height": 48,
+          "originX": 0,
+          "originY": 0,
+          "tint": "#d54377",
+          "values": {"name": "", "depth": 0, "visible": true}
+        },
+        {
+          "name": "Slope",
+          "id": 61,
+          "_eid": "95675713",
+          "x": 152,
+          "y": 1312,
+          "width": 48,
+          "height": 48,
+          "flippedX": true,
+          "flippedY": false,
+          "tint": "#d54377",
+          "values": {"name": "", "depth": 0}
+        },
+        {
+          "name": "Slope",
+          "id": 62,
+          "_eid": "95675713",
+          "x": 200,
+          "y": 1312,
+          "width": 48,
+          "height": 48,
+          "flippedX": false,
+          "flippedY": false,
+          "tint": "#d54377",
+          "values": {"name": "", "depth": 0}
+        },
+        {
+          "name": "Block",
+          "id": 63,
+          "_eid": "93117141",
+          "x": 248,
+          "y": 1312,
+          "width": 160,
+          "height": 48,
+          "originX": 0,
+          "originY": 0,
+          "tint": "#d54377",
+          "values": {"name": "", "depth": 0, "visible": true}
+        },
+        {
+          "name": "Slope",
+          "id": 64,
+          "_eid": "95675713",
+          "x": 200,
+          "y": 1360,
+          "width": 48,
+          "height": 48,
+          "flippedX": true,
+          "flippedY": true,
+          "tint": "#d54377",
+          "values": {"name": "", "depth": 0}
+        },
+        {
+          "name": "Slope",
+          "id": 65,
+          "_eid": "95675713",
+          "x": 152,
+          "y": 1360,
+          "width": 48,
+          "height": 48,
+          "flippedX": false,
+          "flippedY": true,
+          "tint": "#d54377",
+          "values": {"name": "", "depth": 0}
         }
       ]
     },
@@ -2390,6 +2478,18 @@
           "originX": 0.5,
           "originY": 0.5,
           "values": {"name": "MailboxHitbox"}
+        },
+        {
+          "x": 336,
+          "y": 1288,
+          "scaleX": 5,
+          "scaleY": 2,
+          "rotation": 0,
+          "tint": "#2181b7",
+          "texture": "shapes/square32.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": "DanceHitbox"}
         }
       ],
       "folder": "../textures"

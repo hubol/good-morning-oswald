@@ -36,6 +36,7 @@ const [
     txHat1,
     txHat2,
     txHat3,
+    txBodyDucked,
 ] = Tx.Npc.Layers.split({ width: 90 });
 
 function objNpcHead(rng: PseudoRng, skinTint: number, featuresTint: number) {
@@ -110,10 +111,12 @@ export function objNpc({ message, style, messageAlign }: ObjNpcArgs) {
 
     const messageObj = objNpcMessage(message, messageAlign).at(0, -100);
 
+    const bodySpr = Sprite.from(txBody).tinted(skinTint);
+    const headObj = objNpcHead(rng, skinTint, featuresTint);
     const bodyObj = container(
-        Sprite.from(txBody).tinted(skinTint),
+        bodySpr,
         Sprite.from(txPp).tinted(featuresTint),
-        objNpcHead(rng, skinTint, featuresTint),
+        headObj,
     ).pivoted(46, 101);
 
     if (rng.bool()) {
@@ -129,8 +132,10 @@ export function objNpc({ message, style, messageAlign }: ObjNpcArgs) {
         hitboxObj,
     )
         .collisionShape(CollisionShape.DisplayObjects, [hitboxObj])
-        .merge({ messageObj })
+        .merge({ messageObj, isDucking: false })
         .step(self => {
             messageObj.visible = self.collides(playerObj);
+            bodySpr.texture = self.isDucking ? txBodyDucked : txBody;
+            headObj.y = self.isDucking ? 11 : 0;
         });
 }
