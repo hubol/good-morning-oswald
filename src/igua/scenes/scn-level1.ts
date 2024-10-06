@@ -6,12 +6,28 @@ import { blendPixiColor } from "../../lib/pixi/blend-pixi-color";
 import { container } from "../../lib/pixi/container";
 import { Jukebox } from "../core/igua-audio";
 import { Cutscene } from "../globals";
-import { objNpc } from "../objects/obj-npc";
+import { objNpc, objNpcMessage } from "../objects/obj-npc";
 import { playerObj } from "../objects/obj-player";
+import { Collections } from "../systems/collections";
 
 export function scnLevel1() {
     Jukebox.play(Mzk.Field);
-    Lvl.Level1();
+    const { MailboxHitbox } = Lvl.Level1();
+
+    const severanceMoneyMessageObj = objNpcMessage(`Oswald Peanut,
+Please find attached a severance check for 900u
+-FightCo HR`)
+        .at(MailboxHitbox).add(0, -32)
+        .show();
+
+    MailboxHitbox.step(self => {
+        const collided = self.collides(playerObj);
+        severanceMoneyMessageObj.visible = collided;
+        if (collided) {
+            // TODO idk
+            Collections.severanceMoney = true;
+        }
+    });
 
     return;
 

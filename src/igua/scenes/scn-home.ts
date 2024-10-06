@@ -6,6 +6,7 @@ import { blendPixiColor } from "../../lib/pixi/blend-pixi-color";
 import { container } from "../../lib/pixi/container";
 import { Jukebox } from "../core/igua-audio";
 import { Cutscene, forceGameLoop, scene } from "../globals";
+import { objNpcMessage } from "../objects/obj-npc";
 import { playerObj } from "../objects/obj-player";
 
 export function scnHome() {
@@ -14,12 +15,23 @@ export function scnHome() {
     HomeGoodMorning.visible = false;
     HomeWindowLight.alpha = 0;
 
+    let notifiedOfTermination = false;
+
     TelephoneLed.coro(function* (self) {
         while (true) {
             yield sleep(400);
             self.tint = self.tint === 0 ? 0xffffff : 0;
         }
-    });
+    })
+        .step(self => {
+            //         if (notifiedOfTermination || !playerObj.collides(self))
+            //             return;
+
+            //         Cutscene.play(function* () {
+            //             objNpcMessage(`Hey this is List from LegalZone Law.
+            // I'm afraid we don't have a strong enough case.`)
+            //         })
+        });
 
     const windowInitialTint = HomeWindow.tintValue;
 

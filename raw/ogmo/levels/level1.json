@@ -2171,6 +2171,18 @@
           "originX": 0.5,
           "originY": 0.5,
           "values": {"name": ""}
+        },
+        {
+          "x": 244,
+          "y": 462,
+          "scaleX": 1,
+          "scaleY": 0.2,
+          "rotation": 0,
+          "tint": "#c6aec6",
+          "texture": "shapes/square32.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": "MailboxHitbox"}
         }
       ],
       "folder": "../textures"

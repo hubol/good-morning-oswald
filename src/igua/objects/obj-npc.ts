@@ -66,7 +66,8 @@ export function objNpcMessage(message: string) {
 
         (obj.visible ? Sfx.Dialog.Open : Sfx.Dialog.Close).play();
         previous = obj.visible;
-    });
+    })
+        .pivoted(161, 63);
 
     obj.visible = false;
 
@@ -80,7 +81,7 @@ export function objNpc({ message, style }: ObjNpcArgs) {
     const skinTint = AdjustColor.hsv(rng.int(359), rng.float(75, 100), 100).toPixi();
     const featuresTint = rng.color();
 
-    const messageObj = objNpcMessage(message).at(-112 - 46, -52 - 101);
+    const messageObj = objNpcMessage(message).at(0, -100);
 
     const bodyObj = container(
         Sprite.from(txBody).tinted(skinTint),

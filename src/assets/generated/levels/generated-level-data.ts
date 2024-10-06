@@ -122,6 +122,7 @@ export const Lvl = {
     TerrainGrass1_16: d(Tx.Terrain.Grass1, { x: 305, y: 1206, scaleX: 1, scaleY: -1, rotation: 179.39227393151708, originX: 0.5, originY: 0.5, tint: 0x2850b8 }, "BackgroundDecals"),
     TerrainGrass1_17: d(Tx.Terrain.Grass1, { x: 417, y: 1206, scaleX: 1, scaleY: -1, rotation: 179.39227393151708, originX: 0.5, originY: 0.5, tint: 0x2850b8 }, "BackgroundDecals"),
     TerrainGrass1_18: d(Tx.Terrain.Grass1, { x: 231, y: 1225, scaleX: 1, scaleY: -1, rotation: 133.19115163323664, originX: 0.5, originY: 0.5, tint: 0x2850b8 }, "BackgroundDecals"),
+    MailboxHitbox: d(Tx.Shapes.Square32, { x: 244, y: 462, scaleX: 1, scaleY: 0.2, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xc6aec6 }, "BackgroundDecals"),
     Block: e(r["Block"], { x: 80, y: 824, width: 264, height: 80, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
     Slope: e(r["Slope"], { x: 232, y: 792, width: 32, height: 32, flippedX: false, flippedY: false, values: { name: "", depth: 0 }, tint: 0xb82828 }),
     Block_1: e(r["Block"], { x: 264, y: 792, width: 80, height: 32, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
