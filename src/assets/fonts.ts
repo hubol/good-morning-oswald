@@ -21,6 +21,9 @@ export const objText = {
     LargeBold(text = "", style: Style = {}) {
         return new BitmapText(text, { fontName: Fonts.Erotix.font, ...style });
     },
+    LargeScribbleDigits(text = "", style: Style = {}) {
+        return new BitmapText(text, { fontName: Fonts.Scribdig.font, ...style });
+    },
 };
 
 const Fonts = {
@@ -28,6 +31,7 @@ const Fonts = {
     Erotix: Force<BitmapFont>(),
     ErotixLight: Force<BitmapFont>(),
     Flaccid: Force<BitmapFont>(),
+    Scribdig: Force<BitmapFont>(),
 };
 
 type TxFontKey = keyof typeof Tx["Font"];
@@ -43,6 +47,7 @@ export async function loadFontAssets(progress: JobProgress) {
         load("Erotix", require("./font-bitmaps/Erotix.fnt"), "Erotix"),
         load("ErotixLight", require("./font-bitmaps/ErotixLight.fnt"), "ErotixLight"),
         load("Flaccid", require("./font-bitmaps/Flaccid.fnt"), "Flaccid"),
+        load("Scribdig", require("./font-bitmaps/Scribdig.fnt"), "Scribdig"),
     ]);
 }
 
