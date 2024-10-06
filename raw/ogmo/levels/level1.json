@@ -1825,6 +1825,54 @@
           "originX": 0.5,
           "originY": 0.5,
           "values": {"name": ""}
+        },
+        {
+          "x": 309,
+          "y": 89,
+          "scaleX": 2,
+          "scaleY": 1,
+          "rotation": 45,
+          "tint": "#ffffff",
+          "texture": "shapes/line vertical16.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
+        },
+        {
+          "x": 285,
+          "y": 68,
+          "scaleX": 0.5,
+          "scaleY": 0.5,
+          "rotation": 0,
+          "tint": "#ffffff",
+          "texture": "fx/swirl.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
+        },
+        {
+          "x": 298,
+          "y": 88,
+          "scaleX": 2,
+          "scaleY": 1,
+          "rotation": -45,
+          "tint": "#ffffff",
+          "texture": "shapes/line vertical16.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
+        },
+        {
+          "x": 317,
+          "y": 68,
+          "scaleX": 0.5,
+          "scaleY": 0.5,
+          "rotation": 0,
+          "tint": "#ffffff",
+          "texture": "fx/swirl.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
         }
       ],
       "folder": "../textures"
