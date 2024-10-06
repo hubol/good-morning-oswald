@@ -327,12 +327,12 @@ maybe you should try dancing?!",
         messageAlign: "center",
       },
     }),
-    Npc_4: e(r["Npc"], {
+    BlacksmithNpc: e(r["Npc"], {
       x: 288,
       y: 1504,
       values: {
         style: 7676767,
-        name: "",
+        name: "BlacksmithNpc",
         message:
           "Hey, your weenie looks a little big.@\
 It's easy to fix!@\

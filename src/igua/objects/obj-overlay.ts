@@ -9,8 +9,8 @@ import { approachLinear } from "../../lib/math/number";
 import { CollisionShape } from "../../lib/pixi/collision";
 import { Sfx } from "../../assets/sounds";
 
-function computeMoney() {
-    return (Collections.severanceMoney ? 900 : 0) + Collections.looseMoneyUids.size;
+export function computeMoney() {
+    return (Collections.severanceMoney ? 981 : 0) + Collections.looseMoneyUids.size;
 }
 
 function objMoneyCounter() {

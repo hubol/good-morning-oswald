@@ -214,7 +214,7 @@
           "y": 1504,
           "originX": 0,
           "originY": 0,
-          "values": {"style": 7676767, "name": "", "message": "Hey, your weenie looks a little big.@\nIt's easy to fix!@\nCan you get me 1000u by EOD?", "messageAlign": "center"}
+          "values": {"style": 7676767, "name": "BlacksmithNpc", "message": "Hey, your weenie looks a little big.@\nIt's easy to fix!@\nCan you get me 1000u by EOD?", "messageAlign": "center"}
         },
         {
           "name": "Money",
