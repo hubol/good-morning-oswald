@@ -4,14 +4,14 @@ async function sfxs<T>(sfx: (ogg: string) => Promise<T>) {
   const sounds = await Promise.all(
     [
       "collect/valuable1.ogg",
+      "dialog/close.ogg",
+      "dialog/open.ogg",
       "fx/heart1.ogg",
       "fx/heart2.ogg",
       "fx/heart3.ogg",
       "fx/heart4.ogg",
       "fx/heart5.ogg",
       "fx/heart6.ogg",
-      "music/field.ogg",
-      "music/home.ogg",
       "player/duck.ogg",
       "player/unduck.ogg",
     ].map(sfx),
@@ -20,17 +20,17 @@ async function sfxs<T>(sfx: (ogg: string) => Promise<T>) {
     Collect: {
       Valuable1: sounds[0],
     },
-    Fx: {
-      Heart1: sounds[1],
-      Heart2: sounds[2],
-      Heart3: sounds[3],
-      Heart4: sounds[4],
-      Heart5: sounds[5],
-      Heart6: sounds[6],
+    Dialog: {
+      Close: sounds[1],
+      Open: sounds[2],
     },
-    Music: {
-      Field: sounds[7],
-      Home: sounds[8],
+    Fx: {
+      Heart1: sounds[3],
+      Heart2: sounds[4],
+      Heart3: sounds[5],
+      Heart4: sounds[6],
+      Heart5: sounds[7],
+      Heart6: sounds[8],
     },
     Player: {
       Duck: sounds[9],

@@ -8,6 +8,7 @@ import { objText } from "../../assets/fonts";
 import { playerObj } from "./obj-player";
 import { renderer } from "../globals";
 import { CollisionShape } from "../../lib/pixi/collision";
+import { Sfx } from "../../assets/sounds";
 
 interface ObjNpcArgs {
     message: string;
@@ -50,13 +51,26 @@ function objNpcHead(rng: PseudoRng, skinTint: number, featuresTint: number) {
 }
 
 export function objNpcMessage(message: string) {
-    return container(
+    let previous = false;
+
+    const obj = container(
         Sprite.from(Tx.Npc.Message).mixin(mxnBoilPivot),
         objText.LargeBold(message, { maxWidth: 320, tint: 0xC1323E, align: "center" }).at(164, 27).anchored(
             0.5,
             0.5,
         ),
-    );
+    ).step(() => {
+        if (previous === obj.visible) {
+            return;
+        }
+
+        (obj.visible ? Sfx.Dialog.Open : Sfx.Dialog.Close).play();
+        previous = obj.visible;
+    });
+
+    obj.visible = false;
+
+    return obj;
 }
 
 export function objNpc({ message, style }: ObjNpcArgs) {
@@ -67,7 +81,6 @@ export function objNpc({ message, style }: ObjNpcArgs) {
     const featuresTint = rng.color();
 
     const messageObj = objNpcMessage(message).at(-112 - 46, -52 - 101);
-    messageObj.visible = false;
 
     const bodyObj = container(
         Sprite.from(txBody).tinted(skinTint),

@@ -31,7 +31,8 @@ class IguaAudioImpl {
         this._jukeboxGainNode = new GainNode(_context);
         this._jukeboxGainNode.connect(this._globalGainNode);
 
-        this._jukeboxGainNode.gain.value = 0.5;
+        this._sfxGainNode.gain.value = 1.3;
+        this._jukeboxGainNode.gain.value = 0.4;
 
         this.jukebox = new AsshatJukebox(this._jukeboxGainNode);
     }
