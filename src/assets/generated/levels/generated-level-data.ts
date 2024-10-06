@@ -136,6 +136,8 @@ export const Lvl = {
     Slope_8: e(r["Slope"], { x: 256, y: 312, width: 24, height: 24, flippedX: true, flippedY: true, values: { name: "", depth: 0 }, tint: 0x480707 }),
     Slope_9: e(r["Slope"], { x: 112, y: 352, width: 24, height: 24, flippedX: true, flippedY: true, values: { name: "", depth: 0 }, tint: 0x480707 }),
     Block_10: e(r["Block"], { x: 0, y: 352, width: 112, height: 24, values: { name: "", depth: 0, visible: true }, tint: 0x480707 }),
+    Block_11: e(r["Block"], { x: -56, y: -24, width: 32, height: 1120, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_12: e(r["Block"], { x: 536, y: 0, width: 40, height: 1128, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
     TerrainFishSkeleton: d(Tx.Terrain.FishSkeleton, { x: 280, y: 584, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "FrontDecals"),
     TerrainFishSkeleton_1: d(Tx.Terrain.FishSkeleton, { x: 120, y: 616, scaleX: -1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "FrontDecals"),
     TerrainGrass2_8: d(Tx.Terrain.Grass2, { x: 332, y: 536, scaleX: -1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x659b6e }, "FrontDecals"),

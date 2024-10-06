@@ -7,6 +7,7 @@ import { AdjustColor } from "../../lib/pixi/adjust-color";
 import { objText } from "../../assets/fonts";
 import { playerObj } from "./obj-player";
 import { renderer } from "../globals";
+import { CollisionShape } from "../../lib/pixi/collision";
 
 interface ObjNpcArgs {
     message: string;
@@ -48,7 +49,7 @@ function objNpcHead(rng: PseudoRng, skinTint: number, featuresTint: number) {
     ).mixin(mxnBoilPivot);
 }
 
-function objNpcMessage(message: string) {
+export function objNpcMessage(message: string) {
     return container(
         Sprite.from(Tx.Npc.Message).mixin(mxnBoilPivot),
         objText.LargeBold(message, { maxWidth: 320, tint: 0xC1323E, align: "center" }).at(164, 27).anchored(
@@ -65,17 +66,29 @@ export function objNpc({ message, style }: ObjNpcArgs) {
     const skinTint = AdjustColor.hsv(rng.int(359), rng.float(75, 100), 100).toPixi();
     const featuresTint = rng.color();
 
-    const messageObj = objNpcMessage(message).at(-112, -52);
+    const messageObj = objNpcMessage(message).at(-112 - 46, -52 - 101);
     messageObj.visible = false;
 
-    return container(
+    const bodyObj = container(
         Sprite.from(txBody).tinted(skinTint),
         Sprite.from(txPp).tinted(featuresTint),
         objNpcHead(rng, skinTint, featuresTint),
+    ).pivoted(46, 101);
+
+    if (rng.bool()) {
+        bodyObj.scale.x = -1;
+    }
+
+    const hitboxObj = new Graphics().beginFill().drawRect(-32, -80, 64, 80);
+    hitboxObj.visible = false;
+
+    return container(
+        bodyObj,
         messageObj,
+        hitboxObj,
     )
-        .pivoted(46, 101)
+        .collisionShape(CollisionShape.DisplayObjects, [hitboxObj])
         .step(self => {
-            messageObj.visible = self.children[0].collides(playerObj);
+            messageObj.visible = self.collides(playerObj);
         });
 }
