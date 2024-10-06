@@ -85,6 +85,30 @@
           "originX": 0.5,
           "originY": 0.5,
           "values": {"name": ""}
+        },
+        {
+          "x": 359,
+          "y": 170,
+          "scaleX": 1,
+          "scaleY": 1,
+          "rotation": 0,
+          "tint": "#ffffff",
+          "texture": "home/telephone.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": ""}
+        },
+        {
+          "x": 370,
+          "y": 156,
+          "scaleX": 1,
+          "scaleY": 1,
+          "rotation": 0,
+          "tint": "#ffffff",
+          "texture": "home/telephone led.png",
+          "originX": 0.5,
+          "originY": 0.5,
+          "values": {"name": "TelephoneLed"}
         }
       ],
       "folder": "../textures"

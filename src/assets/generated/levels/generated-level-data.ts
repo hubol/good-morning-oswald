@@ -36,6 +36,8 @@ export const Lvl = {
     HomeGoodMorning: d(Tx.Home.GoodMorning, { x: 256, y: 64, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "FrontDecals"),
     HomeWindowLight: d(Tx.Home.WindowLight, { x: 162, y: 151, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffdeb8 }, "FrontDecals"),
     HomeCobweb: d(Tx.Home.Cobweb, { x: 52, y: 175, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x636363 }, "FrontDecals"),
+    HomeTelephone: d(Tx.Home.Telephone, { x: 359, y: 170, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "FrontDecals"),
+    TelephoneLed: d(Tx.Home.TelephoneLed, { x: 370, y: 156, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "FrontDecals"),
     Player: e(r["Player"], { x: 160, y: 186, values: { name: "", depth: 0 } }),
   })),
   Level1: l({ width: 512, height: 1312, backgroundTint: 0x184880 }, () => ({

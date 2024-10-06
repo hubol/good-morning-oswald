@@ -10,9 +10,16 @@ import { playerObj } from "../objects/obj-player";
 
 export function scnHome() {
     Jukebox.warm(Mzk.Home, Mzk.Field);
-    const { HomeGoodMorning, HomeWindow, HomeWindowLight } = Lvl.Home();
+    const { HomeGoodMorning, HomeWindow, HomeWindowLight, TelephoneLed } = Lvl.Home();
     HomeGoodMorning.visible = false;
     HomeWindowLight.alpha = 0;
+
+    TelephoneLed.coro(function* (self) {
+        while (true) {
+            yield sleep(400);
+            self.tint = self.tint === 0 ? 0xffffff : 0;
+        }
+    });
 
     const windowInitialTint = HomeWindow.tintValue;
 
