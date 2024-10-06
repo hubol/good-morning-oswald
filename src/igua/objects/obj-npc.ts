@@ -82,6 +82,7 @@ export function objNpcMessage(message: string, align: Align = "center") {
         (obj.visible ? Sfx.Dialog.Open : Sfx.Dialog.Close).play();
         previous = obj.visible;
     })
+        .track(objNpcMessage)
         .pivoted(161, 63);
 
     obj.visible = false;
