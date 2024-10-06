@@ -396,7 +396,50 @@
           "defaults": 0
         }
       ],
-      "tintable": {"enabled": false, "defaultTint": "#ffffff", "rgbLevelValueName": null, "useDefaultTint": true}
+      "tintable": {"enabled": false, "defaultTint": "#ffffff", "rgbLevelValueName": "", "useDefaultTint": true}
+    },
+    {
+      "exportID": "24636592",
+      "name": "Money",
+      "limit": -1,
+      "size": {"x": 32, "y": 21},
+      "origin": {"x": 16, "y": 10},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ffb100ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "flipOnlyScales": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "hasUid": true,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": [],
+      "values": [
+        {"name": "name", "definition": "String", "display": 0, "defaults": "", "maxLength": 0, "trimWhitespace": true}
+      ],
+      "tintable": {"enabled": false, "defaultTint": "#ffffff", "rgbLevelValueName": null, "useDefaultTint": true},
+      "texture": "preview-images/money.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAVCAYAAAAnzezqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC2SURBVEhL1ZLRDYAgDESrQziBQ/nhBs7jBn44lBO4hAZCDaDVNh4xvsTgB7TXu1YUWCfawq9I09NxH0Wlacz8SoC2bh3OhGHp/IdEqlmXmMriqm+OjsEsgNE8RAiIa1zuAIPYhacatwJKkDsIj8Biv8PsgGXBNJgdiImn0b41R8ALNLazP7VI715HgCZR40BnnPOpA3lzx0nA1aWSiM3QUUiD3U6LEPHkqMruN0IgAhiLEN0uEe25J1GjxgPHEwAAAABJRU5ErkJggg=="
     }
   ],
   "tilesets": []

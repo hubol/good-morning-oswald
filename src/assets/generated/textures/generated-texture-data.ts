@@ -1,6 +1,6 @@
 // This file is generated
 
-const atlases = [{ url: require("./atlas0.png"), texturesCount: 37 }];
+const atlases = [{ url: require("./atlas0.png"), texturesCount: 38 }];
 
 interface TxData {
   id: string;
@@ -14,7 +14,8 @@ interface TxData {
 function txs<T>(tx: (data: TxData) => T) {
   return {
     Collectibles: {
-      BallRed: tx({ id: "Collectibles.BallRed", atlas: 0, x: 1853, y: 298, width: 8, height: 8 }),
+      BallRed: tx({ id: "Collectibles.BallRed", atlas: 0, x: 1853, y: 306, width: 8, height: 8 }),
+      Money: tx({ id: "Collectibles.Money", atlas: 0, x: 1707, y: 274, width: 32, height: 21 }),
     },
     Font: {
       Diggit: tx({ id: "Font.Diggit", atlas: 0, x: 1804, y: 275, width: 54, height: 8 }),
@@ -40,8 +41,8 @@ function txs<T>(tx: (data: TxData) => T) {
       Mailbox: tx({ id: "Home.Mailbox", atlas: 0, x: 1764, y: 176, width: 54, height: 84 }),
       Poster: tx({ id: "Home.Poster", atlas: 0, x: 1804, y: 284, width: 48, height: 54 }),
       Shingles: tx({ id: "Home.Shingles", atlas: 0, x: 1940, y: 203, width: 66, height: 35 }),
-      Tear: tx({ id: "Home.Tear", atlas: 0, x: 1853, y: 284, width: 8, height: 13 }),
-      TelephoneLed: tx({ id: "Home.TelephoneLed", atlas: 0, x: 1661, y: 171, width: 5, height: 3 }),
+      Tear: tx({ id: "Home.Tear", atlas: 0, x: 1853, y: 292, width: 8, height: 13 }),
+      TelephoneLed: tx({ id: "Home.TelephoneLed", atlas: 0, x: 1853, y: 284, width: 5, height: 3 }),
       Telephone: tx({ id: "Home.Telephone", atlas: 0, x: 1865, y: 203, width: 74, height: 64 }),
       WindowLight: tx({ id: "Home.WindowLight", atlas: 0, x: 1726, y: 75, width: 157, height: 100 }),
       Window: tx({ id: "Home.Window", atlas: 0, x: 1661, y: 201, width: 79, height: 60 }),
@@ -56,8 +57,8 @@ function txs<T>(tx: (data: TxData) => T) {
     },
     Shapes: {
       Circle64: tx({ id: "Shapes.Circle64", atlas: 0, x: 1940, y: 239, width: 64, height: 64 }),
-      LineVertical16: tx({ id: "Shapes.LineVertical16", atlas: 0, x: 2005, y: 239, width: 1, height: 16 }),
-      Square32: tx({ id: "Shapes.Square32", atlas: 0, x: 1707, y: 274, width: 32, height: 32 }),
+      LineVertical16: tx({ id: "Shapes.LineVertical16", atlas: 0, x: 1859, y: 275, width: 1, height: 16 }),
+      Square32: tx({ id: "Shapes.Square32", atlas: 0, x: 2005, y: 246, width: 32, height: 32 }),
       Triangle128: tx({ id: "Shapes.Triangle128", atlas: 0, x: 1532, y: 171, width: 128, height: 128 }),
     },
     Terrain: {

@@ -1,4 +1,4 @@
-import { Color, DisplayObject, Sprite } from "pixi.js";
+import { Color, DisplayObject, Graphics, Sprite } from "pixi.js";
 import { Cutscene, Input, scene } from "../globals";
 import { mxnPhysics } from "../mixins/mxn-physics";
 import { container } from "../../lib/pixi/container";
@@ -222,7 +222,11 @@ function objPlayerPuppet() {
 
     const legsObj = objLegs();
     const headObj = objHead();
-    return container(legsObj, headObj)
+
+    const collectionBox = new Graphics().beginFill().drawRect(16, 28, 50, 80);
+    collectionBox.visible = false;
+
+    return container(legsObj, headObj, collectionBox)
         .pivoted(45, 69 + 24)
         .merge({
             isMovingLeft: false,
@@ -235,6 +239,7 @@ function objPlayerPuppet() {
             isFacingAway: false,
             landingFrames: 0,
             shedTear: headObj.shedTear,
+            collectionBox,
         })
         .step(self => {
             headObj.isLookingLeft = self.isMovingLeft;

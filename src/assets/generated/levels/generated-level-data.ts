@@ -156,6 +156,18 @@ export const Lvl = {
     Block_17: e(r["Block"], { x: -128, y: 1160, width: 72, height: 24, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
     Block_18: e(r["Block"], { x: -160, y: 1160, width: 32, height: 160, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
     Block_19: e(r["Block"], { x: -128, y: 1280, width: 104, height: 40, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Money: e(r["Money"], { x: 13, y: 1077, uid: 172824643084100, values: { name: "" } }),
+    Money_1: e(r["Money"], { x: 302, y: 289, uid: 172824644026701, values: { name: "" } }),
+    Money_2: e(r["Money"], { x: 304, y: 30, uid: 172824645277002, values: { name: "" } }),
+    Money_3: e(r["Money"], { x: 356, y: 31, uid: 172824645539603, values: { name: "" } }),
+    Money_4: e(r["Money"], { x: 262, y: 28, uid: 172824645748804, values: { name: "" } }),
+    Money_5: e(r["Money"], { x: 217, y: 27, uid: 172824645956605, values: { name: "" } }),
+    Money_6: e(r["Money"], { x: 472, y: 1112, uid: 172824646816106, values: { name: "" } }),
+    Money_7: e(r["Money"], { x: -103, y: 1259, uid: 172824647169407, values: { name: "" } }),
+    Money_8: e(r["Money"], { x: -73, y: 1227, uid: 172824647869908, values: { name: "" } }),
+    Money_9: e(r["Money"], { x: -45, y: 1260, uid: 172824648059609, values: { name: "" } }),
+    Money_10: e(r["Money"], { x: 507, y: 1074, uid: 172824648961110, values: { name: "" } }),
+    Money_11: e(r["Money"], { x: 312, y: 744, uid: 172824688177300, values: { name: "" } }),
     TerrainFishSkeleton: d(Tx.Terrain.FishSkeleton, { x: 280, y: 832, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "FrontDecals"),
     TerrainFishSkeleton_1: d(Tx.Terrain.FishSkeleton, { x: 120, y: 864, scaleX: -1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "FrontDecals"),
     TerrainGrass2_8: d(Tx.Terrain.Grass2, { x: 332, y: 784, scaleX: -1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x659b6e }, "FrontDecals"),
@@ -226,7 +238,7 @@ export const Lvl = {
         style: 0,
         name: "",
         message:
-          "Oswald I heard about what happened.@\
+          "I heard about what happened.@\
 I'm gonna miss watching your matches on the TV!!!",
         messageAlign: "center",
       },

@@ -1,5 +1,6 @@
 import { vnew } from "../../lib/math/vector-type";
 import { objGate } from "../objects/obj-gate";
+import { objMoney } from "../objects/obj-money";
 import { objNpc } from "../objects/obj-npc";
 import { createPlayerObj, playerObj } from "../objects/obj-player";
 import { objPipe, objPipeSlope, objSolidBlock, objSolidSlope } from "../objects/obj-terrain";
@@ -18,6 +19,7 @@ export const OgmoEntityResolvers = {
             message: (e.values.message as string).replaceAll("@", "\n"),
             messageAlign: e.values.messageAlign,
         }),
+    "Money": (e) => objMoney({ uid: e.uid! }),
 } satisfies Record<string, (e: OgmoFactory.Entity) => unknown>;
 
 function createOrConfigurePlayerObj(entity: OgmoFactory.Entity, checkpointName?: string) {

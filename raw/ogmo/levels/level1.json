@@ -47,7 +47,7 @@
           "y": 824,
           "originX": 0,
           "originY": 0,
-          "values": {"style": 0, "name": "", "message": "Oswald I heard about what happened.@\nI'm gonna miss watching your matches on the TV!!!", "messageAlign": "center"}
+          "values": {"style": 0, "name": "", "message": "I heard about what happened.@\nI'm gonna miss watching your matches on the TV!!!", "messageAlign": "center"}
         },
         {
           "name": "Npc",
@@ -1405,6 +1405,138 @@
           "originY": 0,
           "tint": "#b82828",
           "values": {"name": "", "depth": 0, "visible": true}
+        },
+        {
+          "name": "Money",
+          "id": 47,
+          "_eid": "24636592",
+          "x": 13,
+          "y": 1077,
+          "originX": 16,
+          "originY": 10,
+          "uid": 172824643084100,
+          "values": {"name": ""}
+        },
+        {
+          "name": "Money",
+          "id": 48,
+          "_eid": "24636592",
+          "x": 302,
+          "y": 289,
+          "originX": 16,
+          "originY": 10,
+          "uid": 172824644026701,
+          "values": {"name": ""}
+        },
+        {
+          "name": "Money",
+          "id": 49,
+          "_eid": "24636592",
+          "x": 304,
+          "y": 30,
+          "originX": 16,
+          "originY": 10,
+          "uid": 172824645277002,
+          "values": {"name": ""}
+        },
+        {
+          "name": "Money",
+          "id": 50,
+          "_eid": "24636592",
+          "x": 356,
+          "y": 31,
+          "originX": 16,
+          "originY": 10,
+          "uid": 172824645539603,
+          "values": {"name": ""}
+        },
+        {
+          "name": "Money",
+          "id": 51,
+          "_eid": "24636592",
+          "x": 262,
+          "y": 28,
+          "originX": 16,
+          "originY": 10,
+          "uid": 172824645748804,
+          "values": {"name": ""}
+        },
+        {
+          "name": "Money",
+          "id": 52,
+          "_eid": "24636592",
+          "x": 217,
+          "y": 27,
+          "originX": 16,
+          "originY": 10,
+          "uid": 172824645956605,
+          "values": {"name": ""}
+        },
+        {
+          "name": "Money",
+          "id": 53,
+          "_eid": "24636592",
+          "x": 472,
+          "y": 1112,
+          "originX": 16,
+          "originY": 10,
+          "uid": 172824646816106,
+          "values": {"name": ""}
+        },
+        {
+          "name": "Money",
+          "id": 54,
+          "_eid": "24636592",
+          "x": -103,
+          "y": 1259,
+          "originX": 16,
+          "originY": 10,
+          "uid": 172824647169407,
+          "values": {"name": ""}
+        },
+        {
+          "name": "Money",
+          "id": 55,
+          "_eid": "24636592",
+          "x": -73,
+          "y": 1227,
+          "originX": 16,
+          "originY": 10,
+          "uid": 172824647869908,
+          "values": {"name": ""}
+        },
+        {
+          "name": "Money",
+          "id": 56,
+          "_eid": "24636592",
+          "x": -45,
+          "y": 1260,
+          "originX": 16,
+          "originY": 10,
+          "uid": 172824648059609,
+          "values": {"name": ""}
+        },
+        {
+          "name": "Money",
+          "id": 57,
+          "_eid": "24636592",
+          "x": 507,
+          "y": 1074,
+          "originX": 16,
+          "originY": 10,
+          "uid": 172824648961110,
+          "values": {"name": ""}
+        },
+        {
+          "name": "Money",
+          "id": 58,
+          "_eid": "24636592",
+          "x": 312,
+          "y": 744,
+          "originX": 16,
+          "originY": 10,
+          "uid": 172824688177300,
+          "values": {"name": ""}
         }
       ]
     },
