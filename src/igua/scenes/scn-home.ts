@@ -1,12 +1,15 @@
 import { Lvl } from "../../assets/generated/levels/generated-level-data";
+import { Mzk } from "../../assets/music";
 import { lerp } from "../../lib/game-engine/routines/lerp";
 import { sleep } from "../../lib/game-engine/routines/sleep";
 import { blendPixiColor } from "../../lib/pixi/blend-pixi-color";
 import { container } from "../../lib/pixi/container";
+import { Jukebox } from "../core/igua-audio";
 import { Cutscene, forceGameLoop, scene } from "../globals";
 import { playerObj } from "../objects/obj-player";
 
 export function scnHome() {
+    Jukebox.play(Mzk.Home).warm(Mzk.Field);
     const { HomeGoodMorning, HomeWindow, HomeWindowLight } = Lvl.Home();
     HomeGoodMorning.visible = false;
     HomeWindowLight.alpha = 0;

@@ -1,12 +1,15 @@
 import { Lvl } from "../../assets/generated/levels/generated-level-data";
+import { Mzk } from "../../assets/music";
 import { Coro } from "../../lib/game-engine/routines/coro";
 import { lerp } from "../../lib/game-engine/routines/lerp";
 import { blendPixiColor } from "../../lib/pixi/blend-pixi-color";
 import { container } from "../../lib/pixi/container";
+import { Jukebox } from "../core/igua-audio";
 import { Cutscene } from "../globals";
 import { playerObj } from "../objects/obj-player";
 
 export function scnLevel1() {
+    Jukebox.play(Mzk.Field);
     Lvl.Level1();
 
     Cutscene.play(function* () {
