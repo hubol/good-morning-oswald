@@ -195,7 +195,7 @@ export const Lvl = {
         style: 0,
         name: "",
         message:
-          "Oswald I heard about what happened.\
+          "Oswald I heard about what happened.@\
 I'm gonna miss watching your matches on the TV!!!",
       },
     }),
@@ -206,7 +206,8 @@ I'm gonna miss watching your matches on the TV!!!",
         style: 100,
         name: "",
         message:
-          "Oh man... I guess the rumors were true...\
+          "Oh man...@\
+The rumors were true...@\
 It's enormous",
       },
     }),

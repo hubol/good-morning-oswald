@@ -12,7 +12,7 @@ export const OgmoEntityResolvers = {
     "Pipe": objPipe,
     "PipeSlope": objPipeSlope,
     "Gate": (e) => objGate(e.values as any),
-    "Npc": (e) => objNpc(e.values as any),
+    "Npc": (e) => objNpc({ style: e.values.style, message: (e.values.message as string).replaceAll("@", "\n") }),
 } satisfies Record<string, (e: OgmoFactory.Entity) => unknown>;
 
 function createOrConfigurePlayerObj(entity: OgmoFactory.Entity, checkpointName?: string) {

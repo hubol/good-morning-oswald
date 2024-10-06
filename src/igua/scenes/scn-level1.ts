@@ -13,6 +13,8 @@ export function scnLevel1() {
     Jukebox.play(Mzk.Field);
     Lvl.Level1();
 
+    return;
+
     Cutscene.play(function* () {
         playerObj.scale.x = 0;
         playerObj.alpha = 0;
