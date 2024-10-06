@@ -21,11 +21,19 @@
   "layers": [
     {
       "definition": "entity",
+      "name": "PlayerEntities",
+      "gridSize": {"x": 8, "y": 8},
+      "exportID": "24355120",
+      "requiredTags": ["Player"],
+      "excludedTags": []
+    },
+    {
+      "definition": "entity",
       "name": "FrontEntities",
       "gridSize": {"x": 8, "y": 8},
       "exportID": "13880985",
       "requiredTags": [],
-      "excludedTags": []
+      "excludedTags": ["Player"]
     },
     {
       "definition": "decal",
@@ -47,7 +55,7 @@
       "gridSize": {"x": 8, "y": 8},
       "exportID": "02302709",
       "requiredTags": [],
-      "excludedTags": []
+      "excludedTags": ["Player"]
     },
     {
       "definition": "decal",
@@ -338,7 +346,7 @@
         {"name": "sceneName", "definition": "String", "display": 0, "defaults": "", "maxLength": 0, "trimWhitespace": true},
         {"name": "name", "definition": "String", "display": 0, "defaults": "", "maxLength": 0, "trimWhitespace": true}
       ],
-      "tintable": {"enabled": false, "defaultTint": "#ffffff", "rgbLevelValueName": null, "useDefaultTint": true}
+      "tintable": {"enabled": false, "defaultTint": "#ffffff", "rgbLevelValueName": "", "useDefaultTint": true}
     },
     {
       "exportID": "24158734",
@@ -381,7 +389,7 @@
         {"name": "name", "definition": "String", "display": 0, "defaults": "", "maxLength": 0, "trimWhitespace": true},
         {"name": "message", "definition": "Text", "display": 1, "defaults": ""}
       ],
-      "tintable": {"enabled": false, "defaultTint": "#ffffff", "rgbLevelValueName": null, "useDefaultTint": true}
+      "tintable": {"enabled": false, "defaultTint": "#ffffff", "rgbLevelValueName": "", "useDefaultTint": true}
     }
   ],
   "tilesets": []

@@ -34,20 +34,14 @@ export class AsshatJukebox {
         if (this._latestPlayRequest === track) {
             const wasPreviousPlaying = Boolean(this._nowPlaying);
 
-            let instance: SoundInstance;
-
             // This is shit :-)
             if (wasPreviousPlaying) {
-                this._nowPlaying?.instance?.linearRamp?.("gain", 0, 1);
-                await timeoutSleep(1000);
-                this._nowPlaying?.instance?.stop?.();
-                instance = sound.with.loop(true).gain(0).playInstance();
-                instance.linearRamp("gain", 1, 1);
+                this._nowPlaying?.instance?.linearRamp?.("gain", 0, 2);
+                await timeoutSleep(2000);
             }
-            else {
-                this._nowPlaying?.instance?.stop();
-                instance = sound.with.loop(true).gain(1).playInstance();
-            }
+
+            this._nowPlaying?.instance?.stop();
+            const instance = sound.with.loop(true).gain(1).playInstance();
             this._nowPlaying = { track, instance };
         }
     }
