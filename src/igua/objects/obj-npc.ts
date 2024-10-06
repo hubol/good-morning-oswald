@@ -68,12 +68,15 @@ const anchorXByAlign: Record<Align, number> = {
 export function objNpcMessage(message: string, align: Align = "center") {
     let previous = false;
 
-    const obj = container(
-        Sprite.from(Tx.Npc.Message).mixin(mxnBoilPivot),
-        objText.LargeBold(message, { maxWidth: 320, tint: 0xC1323E, align }).at(xByAlign[align], 27).anchored(
+    const textObj = objText.LargeBold(message, { maxWidth: 320, tint: 0xC1323E, align }).at(xByAlign[align], 27)
+        .anchored(
             anchorXByAlign[align],
             0.5,
-        ),
+        );
+
+    const obj = container(
+        Sprite.from(Tx.Npc.Message).mixin(mxnBoilPivot),
+        textObj,
     ).step(() => {
         if (previous === obj.visible) {
             return;
@@ -82,6 +85,14 @@ export function objNpcMessage(message: string, align: Align = "center") {
         (obj.visible ? Sfx.Dialog.Open : Sfx.Dialog.Close).play();
         previous = obj.visible;
     })
+        .merge({
+            get text() {
+                return textObj.text;
+            },
+            set text(value) {
+                textObj.text = value;
+            },
+        })
         .track(objNpcMessage)
         .pivoted(161, 63);
 
@@ -118,6 +129,7 @@ export function objNpc({ message, style, messageAlign }: ObjNpcArgs) {
         hitboxObj,
     )
         .collisionShape(CollisionShape.DisplayObjects, [hitboxObj])
+        .merge({ messageObj })
         .step(self => {
             messageObj.visible = self.collides(playerObj);
         });
