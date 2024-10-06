@@ -9,7 +9,7 @@ import { Cutscene, forceGameLoop, scene } from "../globals";
 import { playerObj } from "../objects/obj-player";
 
 export function scnHome() {
-    Jukebox.play(Mzk.Home).warm(Mzk.Field);
+    Jukebox.warm(Mzk.Home, Mzk.Field);
     const { HomeGoodMorning, HomeWindow, HomeWindowLight } = Lvl.Home();
     HomeGoodMorning.visible = false;
     HomeWindowLight.alpha = 0;
@@ -31,6 +31,7 @@ export function scnHome() {
         playerObj.shedTear();
         yield sleep(1500);
         HomeGoodMorning.visible = true;
+        Jukebox.play(Mzk.Home);
         yield sleep(500);
     });
 
