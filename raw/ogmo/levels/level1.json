@@ -1,7 +1,7 @@
 {
   "ogmoVersion": "3.4.0-hubol",
   "width": 512,
-  "height": 1312,
+  "height": 1544,
   "offsetX": 0,
   "offsetY": 0,
   "values": {"Terrain Color": "#b82828"},
@@ -15,7 +15,7 @@
       "gridCellWidth": 8,
       "gridCellHeight": 8,
       "gridCellsX": 64,
-      "gridCellsY": 164,
+      "gridCellsY": 193,
       "entities": [
         {
           "name": "Player",
@@ -37,7 +37,7 @@
       "gridCellWidth": 8,
       "gridCellHeight": 8,
       "gridCellsX": 64,
-      "gridCellsY": 164,
+      "gridCellsY": 193,
       "entities": [
         {
           "name": "Npc",
@@ -47,7 +47,7 @@
           "y": 824,
           "originX": 0,
           "originY": 0,
-          "values": {"style": 0, "name": "", "message": "Oswald I heard about what happened.@\nI'm gonna miss watching your matches on the TV!!!"}
+          "values": {"style": 0, "name": "", "message": "Oswald I heard about what happened.@\nI'm gonna miss watching your matches on the TV!!!", "messageAlign": "center"}
         },
         {
           "name": "Npc",
@@ -57,7 +57,7 @@
           "y": 936,
           "originX": 0,
           "originY": 0,
-          "values": {"style": 100, "name": "", "message": "Oh man...@\nThe rumors were true...@\nIt's enormous"}
+          "values": {"style": 100, "name": "", "message": "Oh man...@\nThe rumors were true...@\nIt's enormous", "messageAlign": "left"}
         },
         {
           "name": "Npc",
@@ -67,7 +67,7 @@
           "y": 1144,
           "originX": 0,
           "originY": 0,
-          "values": {"style": 300, "name": "", "message": "Sorry about your career dawg!@\nThere's a blacksmith who can you help you,@\nbut he's not very cheap..."}
+          "values": {"style": 300, "name": "", "message": "Sorry about your career dawg!@\nThere's a blacksmith who can you help you,@\nbut he's not very cheap...", "messageAlign": "center"}
         },
         {
           "name": "Block",
@@ -185,6 +185,16 @@
           "originY": 0,
           "tint": "#b82828",
           "values": {"name": "", "depth": 0, "visible": true}
+        },
+        {
+          "name": "Npc",
+          "id": 15,
+          "_eid": "24158734",
+          "x": 0,
+          "y": 1280,
+          "originX": 0,
+          "originY": 0,
+          "values": {"style": 5555, "name": "", "message": "Heh, freak!@\nNow you have to scrounge@\nfor money like the rest of us.", "messageAlign": "right"}
         }
       ]
     },
@@ -196,7 +206,7 @@
       "gridCellWidth": 8,
       "gridCellHeight": 8,
       "gridCellsX": 64,
-      "gridCellsY": 164,
+      "gridCellsY": 193,
       "decals": [
         {
           "x": 280,
@@ -965,7 +975,7 @@
       "gridCellWidth": 8,
       "gridCellHeight": 8,
       "gridCellsX": 64,
-      "gridCellsY": 164,
+      "gridCellsY": 193,
       "entities": [
         {
           "name": "Block",
@@ -1247,7 +1257,7 @@
           "x": -56,
           "y": 224,
           "width": 32,
-          "height": 1120,
+          "height": 960,
           "originX": 0,
           "originY": 0,
           "tint": "#b82828",
@@ -1260,7 +1270,7 @@
           "x": 536,
           "y": 248,
           "width": 40,
-          "height": 1128,
+          "height": 1296,
           "originX": 0,
           "originY": 0,
           "tint": "#b82828",
@@ -1343,6 +1353,58 @@
           "originY": 0,
           "tint": "#b82828",
           "values": {"name": "", "depth": 0, "visible": true}
+        },
+        {
+          "name": "Block",
+          "id": 43,
+          "_eid": "93117141",
+          "x": -24,
+          "y": 1280,
+          "width": 72,
+          "height": 40,
+          "originX": 0,
+          "originY": 0,
+          "tint": "#b82828",
+          "values": {"name": "", "depth": 0, "visible": true}
+        },
+        {
+          "name": "Block",
+          "id": 44,
+          "_eid": "93117141",
+          "x": -128,
+          "y": 1160,
+          "width": 72,
+          "height": 24,
+          "originX": 0,
+          "originY": 0,
+          "tint": "#b82828",
+          "values": {"name": "", "depth": 0, "visible": true}
+        },
+        {
+          "name": "Block",
+          "id": 45,
+          "_eid": "93117141",
+          "x": -160,
+          "y": 1160,
+          "width": 32,
+          "height": 160,
+          "originX": 0,
+          "originY": 0,
+          "tint": "#b82828",
+          "values": {"name": "", "depth": 0, "visible": true}
+        },
+        {
+          "name": "Block",
+          "id": 46,
+          "_eid": "93117141",
+          "x": -128,
+          "y": 1280,
+          "width": 104,
+          "height": 40,
+          "originX": 0,
+          "originY": 0,
+          "tint": "#b82828",
+          "values": {"name": "", "depth": 0, "visible": true}
         }
       ]
     },
@@ -1354,7 +1416,7 @@
       "gridCellWidth": 8,
       "gridCellHeight": 8,
       "gridCellsX": 64,
-      "gridCellsY": 164,
+      "gridCellsY": 193,
       "decals": [
         {
           "x": 56,
@@ -2195,7 +2257,7 @@
       "gridCellWidth": 8,
       "gridCellHeight": 8,
       "gridCellsX": 64,
-      "gridCellsY": 164,
+      "gridCellsY": 193,
       "decals": [
         {
           "x": 56,

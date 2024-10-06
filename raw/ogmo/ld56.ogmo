@@ -387,9 +387,16 @@
       "values": [
         {"name": "style", "definition": "Integer", "display": 0, "defaults": 0, "bounded": false, "min": 0, "max": 100},
         {"name": "name", "definition": "String", "display": 0, "defaults": "", "maxLength": 0, "trimWhitespace": true},
-        {"name": "message", "definition": "Text", "display": 1, "defaults": ""}
+        {"name": "message", "definition": "Text", "display": 1, "defaults": ""},
+        {
+          "name": "messageAlign",
+          "definition": "Enum",
+          "display": 0,
+          "choices": ["center", "left", "right"],
+          "defaults": 0
+        }
       ],
-      "tintable": {"enabled": false, "defaultTint": "#ffffff", "rgbLevelValueName": "", "useDefaultTint": true}
+      "tintable": {"enabled": false, "defaultTint": "#ffffff", "rgbLevelValueName": null, "useDefaultTint": true}
     }
   ],
   "tilesets": []

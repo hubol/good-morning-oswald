@@ -40,7 +40,7 @@ export const Lvl = {
     TelephoneLed: d(Tx.Home.TelephoneLed, { x: 370, y: 156, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "FrontDecals"),
     Player: e(r["Player"], { x: 160, y: 186, values: { name: "", depth: 0 } }),
   })),
-  Level1: l({ width: 512, height: 1312, backgroundTint: 0x184880 }, () => ({
+  Level1: l({ width: 512, height: 1544, backgroundTint: 0x184880 }, () => ({
     FxCloud: d(Tx.Fx.Cloud, { x: 56, y: 736, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "SkyDecals"),
     FxCloud_1: d(Tx.Fx.Cloud, { x: 200, y: 680, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "SkyDecals"),
     FxCloud_2: d(Tx.Fx.Cloud, { x: 456, y: 776, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "SkyDecals"),
@@ -144,14 +144,18 @@ export const Lvl = {
     Slope_8: e(r["Slope"], { x: 256, y: 560, width: 24, height: 24, flippedX: true, flippedY: true, values: { name: "", depth: 0 }, tint: 0x480707 }),
     Slope_9: e(r["Slope"], { x: 112, y: 600, width: 24, height: 24, flippedX: true, flippedY: true, values: { name: "", depth: 0 }, tint: 0x480707 }),
     Block_10: e(r["Block"], { x: 0, y: 600, width: 112, height: 24, values: { name: "", depth: 0, visible: true }, tint: 0x480707 }),
-    Block_11: e(r["Block"], { x: -56, y: 224, width: 32, height: 1120, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
-    Block_12: e(r["Block"], { x: 536, y: 248, width: 40, height: 1128, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_11: e(r["Block"], { x: -56, y: 224, width: 32, height: 960, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_12: e(r["Block"], { x: 536, y: 248, width: 40, height: 1296, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
     Block_13: e(r["Block"], { x: 248, y: 1144, width: 288, height: 64, values: { name: "", depth: 0, visible: true }, tint: 0x2850b8 }),
     Slope_10: e(r["Slope"], { x: 184, y: 1144, width: 64, height: 64, flippedX: false, flippedY: false, values: { name: "", depth: 0 }, tint: 0x2850b8 }),
     Slope_11: e(r["Slope"], { x: 184, y: 1208, width: 64, height: 64, flippedX: true, flippedY: true, values: { name: "", depth: 0 }, tint: 0x2850b8 }),
     Slope_12: e(r["Slope"], { x: 120, y: 1208, width: 64, height: 64, flippedX: false, flippedY: true, values: { name: "", depth: 0 }, tint: 0x2850b8 }),
     Block_14: e(r["Block"], { x: -56, y: -8, width: 32, height: 232, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
     Block_15: e(r["Block"], { x: 536, y: 16, width: 32, height: 232, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_16: e(r["Block"], { x: -24, y: 1280, width: 72, height: 40, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_17: e(r["Block"], { x: -128, y: 1160, width: 72, height: 24, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_18: e(r["Block"], { x: -160, y: 1160, width: 32, height: 160, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_19: e(r["Block"], { x: -128, y: 1280, width: 104, height: 40, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
     TerrainFishSkeleton: d(Tx.Terrain.FishSkeleton, { x: 280, y: 832, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "FrontDecals"),
     TerrainFishSkeleton_1: d(Tx.Terrain.FishSkeleton, { x: 120, y: 864, scaleX: -1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0xffffff }, "FrontDecals"),
     TerrainGrass2_8: d(Tx.Terrain.Grass2, { x: 332, y: 784, scaleX: -1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x659b6e }, "FrontDecals"),
@@ -224,6 +228,7 @@ export const Lvl = {
         message:
           "Oswald I heard about what happened.@\
 I'm gonna miss watching your matches on the TV!!!",
+        messageAlign: "center",
       },
     }),
     Npc_1: e(r["Npc"], {
@@ -236,6 +241,7 @@ I'm gonna miss watching your matches on the TV!!!",
           "Oh man...@\
 The rumors were true...@\
 It's enormous",
+        messageAlign: "left",
       },
     }),
     Npc_2: e(r["Npc"], {
@@ -248,17 +254,31 @@ It's enormous",
           "Sorry about your career dawg!@\
 There's a blacksmith who can you help you,@\
 but he's not very cheap...",
+        messageAlign: "center",
       },
     }),
-    Block_16: e(r["Block"], { x: 512, y: 696, width: 24, height: 40, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
-    Block_17: e(r["Block"], { x: 512, y: 616, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
-    Block_18: e(r["Block"], { x: 512, y: 536, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
-    Block_19: e(r["Block"], { x: 512, y: 456, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
-    Block_20: e(r["Block"], { x: 512, y: 376, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
-    Block_21: e(r["Block"], { x: 512, y: 296, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
-    Block_22: e(r["Block"], { x: 512, y: 216, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
-    Block_23: e(r["Block"], { x: 512, y: 136, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
-    Block_24: e(r["Block"], { x: 512, y: 56, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_20: e(r["Block"], { x: 512, y: 696, width: 24, height: 40, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_21: e(r["Block"], { x: 512, y: 616, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_22: e(r["Block"], { x: 512, y: 536, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_23: e(r["Block"], { x: 512, y: 456, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_24: e(r["Block"], { x: 512, y: 376, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_25: e(r["Block"], { x: 512, y: 296, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_26: e(r["Block"], { x: 512, y: 216, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_27: e(r["Block"], { x: 512, y: 136, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Block_28: e(r["Block"], { x: 512, y: 56, width: 24, height: 16, values: { name: "", depth: 0, visible: true }, tint: 0xb82828 }),
+    Npc_3: e(r["Npc"], {
+      x: 0,
+      y: 1280,
+      values: {
+        style: 5555,
+        name: "",
+        message:
+          "Heh, freak!@\
+Now you have to scrounge@\
+for money like the rest of us.",
+        messageAlign: "right",
+      },
+    }),
     Player: e(r["Player"], { x: 104, y: 502, values: { name: "", depth: 0 } }),
   })),
 };

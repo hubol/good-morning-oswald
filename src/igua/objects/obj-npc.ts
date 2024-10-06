@@ -12,6 +12,7 @@ import { Sfx } from "../../assets/sounds";
 
 interface ObjNpcArgs {
     message: string;
+    messageAlign?: Align;
     style: number;
 }
 
@@ -50,13 +51,27 @@ function objNpcHead(rng: PseudoRng, skinTint: number, featuresTint: number) {
     ).mixin(mxnBoilPivot);
 }
 
-export function objNpcMessage(message: string) {
+type Align = "left" | "right" | "center";
+
+const xByAlign: Record<Align, number> = {
+    center: 164,
+    left: 6,
+    right: 336,
+};
+
+const anchorXByAlign: Record<Align, number> = {
+    center: 0.5,
+    left: 0,
+    right: 1,
+};
+
+export function objNpcMessage(message: string, align: Align = "center") {
     let previous = false;
 
     const obj = container(
         Sprite.from(Tx.Npc.Message).mixin(mxnBoilPivot),
-        objText.LargeBold(message, { maxWidth: 320, tint: 0xC1323E, align: "center" }).at(164, 27).anchored(
-            0.5,
+        objText.LargeBold(message, { maxWidth: 320, tint: 0xC1323E, align }).at(xByAlign[align], 27).anchored(
+            anchorXByAlign[align],
             0.5,
         ),
     ).step(() => {
@@ -74,14 +89,14 @@ export function objNpcMessage(message: string) {
     return obj;
 }
 
-export function objNpc({ message, style }: ObjNpcArgs) {
+export function objNpc({ message, style, messageAlign }: ObjNpcArgs) {
     const rng = new PseudoRng(style);
 
     // Math be like
     const skinTint = AdjustColor.hsv(rng.int(359), rng.float(75, 100), 100).toPixi();
     const featuresTint = rng.color();
 
-    const messageObj = objNpcMessage(message).at(0, -100);
+    const messageObj = objNpcMessage(message, messageAlign).at(0, -100);
 
     const bodyObj = container(
         Sprite.from(txBody).tinted(skinTint),
