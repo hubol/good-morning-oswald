@@ -188,5 +188,27 @@ export const Lvl = {
     TerrainGrass1_18: d(Tx.Terrain.Grass1, { x: 256, y: 304, scaleX: -1, scaleY: -1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x480707 }, "FrontDecals"),
     TerrainGrass3_26: d(Tx.Terrain.Grass3, { x: 224, y: 320, scaleX: 1, scaleY: 1, rotation: 0, originX: 0.5, originY: 0.5, tint: 0x480707 }, "FrontDecals"),
     Player: e(r["Player"], { x: 104, y: 254, values: { name: "", depth: 0 } }),
+    Npc: e(r["Npc"], {
+      x: 128,
+      y: 576,
+      values: {
+        style: 0,
+        name: "",
+        message:
+          "Oswald I heard about what happened.\
+I'm gonna miss watching your matches on the TV!!!",
+      },
+    }),
+    Npc_1: e(r["Npc"], {
+      x: 456,
+      y: 688,
+      values: {
+        style: 100,
+        name: "",
+        message:
+          "Oh man... I guess the rumors were true...\
+It's enormous",
+      },
+    }),
   })),
 };

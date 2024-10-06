@@ -26,6 +26,26 @@
           "originX": 30,
           "originY": 56,
           "values": {"name": "", "depth": 0}
+        },
+        {
+          "name": "Npc",
+          "id": 1,
+          "_eid": "24158734",
+          "x": 128,
+          "y": 576,
+          "originX": 0,
+          "originY": 0,
+          "values": {"style": 0, "name": "", "message": "Oswald I heard about what happened.\nI'm gonna miss watching your matches on the TV!!!"}
+        },
+        {
+          "name": "Npc",
+          "id": 2,
+          "_eid": "24158734",
+          "x": 456,
+          "y": 688,
+          "originX": 0,
+          "originY": 0,
+          "values": {"style": 100, "name": "", "message": "Oh man... I guess the rumors were true...\nIt's enormous"}
         }
       ]
     },

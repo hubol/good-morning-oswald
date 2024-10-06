@@ -6,6 +6,7 @@ import { blendPixiColor } from "../../lib/pixi/blend-pixi-color";
 import { container } from "../../lib/pixi/container";
 import { Jukebox } from "../core/igua-audio";
 import { Cutscene } from "../globals";
+import { objNpc } from "../objects/obj-npc";
 import { playerObj } from "../objects/obj-player";
 
 export function scnLevel1() {

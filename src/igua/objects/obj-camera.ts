@@ -9,7 +9,7 @@ export function objCamera() {
         // TODO camera behavior should be overrideable
         // e.g. there should be modes other than following the player
         if (playerObj && !playerObj.destroyed) {
-            self.at(playerObj).add(-128, -128);
+            self.at(playerObj).add(-128, -160);
         }
 
         // TODO switch for this?
