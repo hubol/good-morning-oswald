@@ -1,4 +1,5 @@
 import { intervalWait } from "../../browser/interval-wait";
+import { timeoutSleep } from "../../browser/timeout-sleep";
 import { Sound, SoundInstance } from "./sound";
 
 export type MusicTrack = string & { readonly __t: unique symbol };
@@ -11,7 +12,7 @@ interface NowPlaying {
 // TODO generics?
 export class AsshatJukebox {
     private readonly _loader: MusicTrackLoader;
-    private _nowPlaying?: NowPlaying;
+    private _nowPlaying: NowPlaying | null = null;
 
     constructor(private readonly _destination: AudioNode) {
         this._loader = new MusicTrackLoader(_destination);
@@ -31,8 +32,22 @@ export class AsshatJukebox {
         }
         const sound = await this._loader.load(track);
         if (this._latestPlayRequest === track) {
-            this._nowPlaying?.instance?.stop();
-            const instance = sound.with.loop(true).playInstance();
+            const wasPreviousPlaying = Boolean(this._nowPlaying);
+
+            let instance: SoundInstance;
+
+            // This is shit :-)
+            if (wasPreviousPlaying) {
+                this._nowPlaying?.instance?.linearRamp?.("gain", 0, 1);
+                await timeoutSleep(1000);
+                this._nowPlaying?.instance?.stop?.();
+                instance = sound.with.loop(true).gain(0).playInstance();
+                instance.linearRamp("gain", 1, 1);
+            }
+            else {
+                this._nowPlaying?.instance?.stop();
+                instance = sound.with.loop(true).gain(1).playInstance();
+            }
             this._nowPlaying = { track, instance };
         }
     }
