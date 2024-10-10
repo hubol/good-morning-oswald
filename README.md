@@ -1,6 +1,9 @@
-# IguaRPG 2
-### Another computer game of the ages
-This is another fangame of [Oddwarg Animal RPG](https://oddwarg.com/Games/OARPG/), a Game Maker game from 2003.
+# Good Morning Oswald
+A very short Ludum Dare 56 jam game.
+
+https://ldjam.com/events/ludum-dare/56/good-morning-oswald
+
+https://hubol.itch.io/good-morning-oswald
 
 ## Using the source code
 
@@ -29,11 +32,3 @@ Starts `@hubol/smooch`, the tool responsible for monitoring binary assets and tu
 ```npm run serve```
 
 Starts the project in development mode
-
-## Play an alpha?!
-You can play an extremely early version of the game. The most recent commit to this repository is hosted on Heroku.
-At the time of writing this, the "game" is mostly a sandbox for testing a revamped game engine.
-
-[Play alpha version on Heroku](https://igua-rpg2-d76be5c97e6f.herokuapp.com/)
-
-**Note:** it may take several seconds for the Heroku app to load, as I have paid for the cheapest tier available.
