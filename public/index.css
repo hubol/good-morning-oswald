@@ -7,9 +7,8 @@ html {
     font-family: sans-serif;
     height: 100%;
     overflow: hidden;
-    --bg-color: #3870A8;
-    --bg-color-dark: #205088;
-    --loading-color: #f8b0b4;
+    --bg-color: #000000;
+    --loading-color: #FFB807;
 }
 
 #game_canvas {
@@ -18,8 +17,6 @@ html {
     image-rendering: pixelated;
 
     cursor: none;
-
-    border-radius: 4px;
 }
 
 #fatal_error {
